@@ -1,0 +1,56 @@
+* Get access to Vantage
+** xref::en/run-vantage-express-on-aws.adoc[Vantage Express on AWS]
+** xref::en/vantage.express.gcp.adoc[Vantage Express on Google Cloud]
+** xref::en/run-vantage-express-on-microsoft-azure.adoc[Vantage Express on Azure]
+** xref::en/getting.started.vmware.adoc[Vantage Express on VMware]
+** xref::en/getting.started.vbox.adoc[Vantage Express on VirtualBox]
+** xref::en/getting.started.utm.adoc[Vantage Express on UTM]
+
+* Connect to Vantage
+** xref::en/install-teradata-studio-on-mac-m1-m2.adoc[]
+** xref::en/other-integrations/configure-a-teradata-vantage-connection-in-dbeaver.adoc[]
+** Configure ODBC
+*** xref::en/odbc.ubuntu.adoc[Ubuntu]
+
+* Manage data
+** xref::en/nos.adoc[]
+** xref::en/dbt.adoc[]
+** xref::en/advanced-dbt.adoc[]
+** xref::en/tools-and-utilities/run-bulkloads-efficiently-with-teradata-parallel-transporter.adoc[Load data with TPT]
+** xref::en/create-parquet-files-in-object-storage.adoc[]
+** xref::en/other-integrations/execute-airflow-workflows-that-use-dbt-with-teradata-vantage.adoc[]
+** xref::en/cloud-guides/integrate-teradata-vantage-to-salesforce-using-amazon-appflow.adoc[]
+** xref::en/segment.adoc[]
+** xref::en/cloud-guides/connect-azure-data-share-to-teradata-vantage.adoc[]
+** xref::en/cloud-guides/integrate-teradata-vantage-with-google-cloud-data-catalog.adoc[]
+
+* Create applications
+** xref::en/jdbc.adoc[]
+** xref::en/mule.jdbc.example.adoc[]
+** xref::en/query-service/send-queries-using-rest-api.adoc[]
+
+* Analyze data
+** xref::en/jupyter.adoc[]
+** xref::en/local.jupyter.hub.adoc[]
+** xref::en/ml.adoc[]
+** xref::en/sto.adoc[]
+** xref::en/perform-time-series-analysis-using-teradata-vantage.adoc[Perform time series analysis]
+** xref::en/modelops/deploy-and-monitor-machine-learning-models-with-teradata-modelops-and-byom.adoc[]
+** xref::en/modelops/deploy-and-monitor-machine-learning-models-with-teradata-modelops-and-git.adoc[]
+** xref::en/modelops/using-feast-feature-store-with-teradata-vantage.adoc[]
+** xref::en/cloud-guides/sagemaker-with-teradata-vantage.adoc[]
+** xref::en/cloud-guides/use-teradata-vantage-with-azure-machine-learning-studio.adoc[]
+** xref::en/cloud-guides/integrate-teradata-jupyter-extensions-with-google-vertex-ai.adoc[]
+** xref::en/cloud-guides/integrate-teradata-jupyter-extensions-with-sagemaker.adoc[]
+** xref::en/business-intelligence/create-stunning-visualizations-in-power-bi-using-data-from-teradata-vantage.adoc[]
+** xref::en/other-integrations/integrate-teradata-vantage-with-knime.adoc[]
+
+* Demos
+** Financial
+*** xref::en/jupyter-demos/gcp-vertex-ai-pipelines-vantage-byom-housing-example.adoc[]
+
+* Regulus (preview)
+** xref::en/regulus/install-regulus-docker-image.adoc[]
+** xref::en/regulus/getting-started-with-regulus.adoc[]
+** xref::en/regulus/regulus-magic-reference.adoc[]
+** xref::en/regulus/using-regulus-workspace-cli.adoc[]
