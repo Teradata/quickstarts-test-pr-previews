@@ -16,7 +16,7 @@ This is a how-to for people who are new to ClearScape Analytics ModelOps. In the
 
 * Ability to run Jupyter notebooks
 
-include::ROOT:partial$vantage_clearscape_analytics.adoc[]
+include::../partials/vantage_clearscape_analytics.adoc[]
 
 Files needed
 

@@ -16,18 +16,18 @@
 ** xref::en/nos.adoc[]
 ** xref::en/dbt.adoc[]
 ** xref::en/advanced-dbt.adoc[]
-** xref:tools-and-utilities:run-bulkloads-efficiently-with-teradata-parallel-transporter.adoc[Load data with TPT]
+** xref::en/tools-and-utilities/run-bulkloads-efficiently-with-teradata-parallel-transporter.adoc[Load data with TPT]
 ** xref::en/create-parquet-files-in-object-storage.adoc[]
 ** xref::en/other-integrations/execute-airflow-workflows-that-use-dbt-with-teradata-vantage.adoc[]
-** xref:cloud-guides:integrate-teradata-vantage-to-salesforce-using-amazon-appflow.adoc[]
+** xref::en/cloud-guides/integrate-teradata-vantage-to-salesforce-using-amazon-appflow.adoc[]
 ** xref::en/segment.adoc[]
-** xref:cloud-guides:connect-azure-data-share-to-teradata-vantage.adoc[]
-** xref:cloud-guides:integrate-teradata-vantage-with-google-cloud-data-catalog.adoc[]
+** xref::en/cloud-guides/connect-azure-data-share-to-teradata-vantage.adoc[]
+** xref::en/cloud-guides/integrate-teradata-vantage-with-google-cloud-data-catalog.adoc[]
 
 * Create applications
 ** xref::en/jdbc.adoc[]
 ** xref::en/mule.jdbc.example.adoc[]
-** xref:query-service:send-queries-using-rest-api.adoc[]
+** xref::en/query-service/send-queries-using-rest-api.adoc[]
 
 * Analyze data
 ** xref::en/jupyter.adoc[]
@@ -38,16 +38,12 @@
 ** xref::en/modelops/deploy-and-monitor-machine-learning-models-with-teradata-modelops-and-byom.adoc[]
 ** xref::en/modelops/deploy-and-monitor-machine-learning-models-with-teradata-modelops-and-git.adoc[]
 ** xref::en/modelops/using-feast-feature-store-with-teradata-vantage.adoc[]
-** xref:cloud-guides:sagemaker-with-teradata-vantage.adoc[]
-** xref:cloud-guides:use-teradata-vantage-with-azure-machine-learning-studio.adoc[]
-** xref:cloud-guides:integrate-teradata-jupyter-extensions-with-google-vertex-ai.adoc[]
-** xref:cloud-guides:integrate-teradata-jupyter-extensions-with-sagemaker.adoc[]
+** xref::en/cloud-guides/sagemaker-with-teradata-vantage.adoc[]
+** xref::en/cloud-guides/use-teradata-vantage-with-azure-machine-learning-studio.adoc[]
+** xref::en/cloud-guides/integrate-teradata-jupyter-extensions-with-google-vertex-ai.adoc[]
+** xref::en/cloud-guides/integrate-teradata-jupyter-extensions-with-sagemaker.adoc[]
 ** xref::en/business-intelligence/create-stunning-visualizations-in-power-bi-using-data-from-teradata-vantage.adoc[]
 ** xref::en/other-integrations/integrate-teradata-vantage-with-knime.adoc[]
-
-* Demos
-** Financial
-*** xref:jupyter-demos:gcp-vertex-ai-pipelines-vantage-byom-housing-example.adoc[]
 
 * Demos
 ** Financial
