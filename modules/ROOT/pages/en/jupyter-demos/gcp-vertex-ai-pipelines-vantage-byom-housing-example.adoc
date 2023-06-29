@@ -3,6 +3,6 @@
 :keywords: data warehouses, cloud data warehouse, compute storage separation, teradata, vantage, cloud data platform, java applications, business intelligence, enterprise analytics, hybrid multi-cloud, business outcomes
 :page-jupyterbook: true
 
-++++
-include::partial$vertex-pipelines-housing-example-byom.html[]
-++++
+
+include::partials/vertex-pipelines-housing-example-byom.adoc[]
+

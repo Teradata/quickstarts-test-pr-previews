@@ -11,7 +11,7 @@
 
 This how-to demonstrates how to run Vantage Express in Microsoft Azure. Vantage Express contains a fully functional Teradata SQL Engine.
 
-NOTE: If do not wish to pay for cloud usage you can install Vantage Express locally using link:getting.started.vmware.adoc[VMware], link:getting.started.vbox[VirtualBox], or xref:getting.started.utm.adoc[UTM].
+NOTE: If do not wish to pay for cloud usage you can install Vantage Express locally using link::getting.started.vmware.adoc[VMware], link::getting.started.vbox[VirtualBox], or xref::en/getting.started.utm.adoc[UTM].
 
 == Prerequisites
 
@@ -137,7 +137,7 @@ partprobe /dev/sdc1
 export DISK_UUID=$(blkid | grep sdc1 | cut -d"\"" -f2)
 echo "UUID=$DISK_UUID  /opt/downloads   xfs   defaults,nofail   1   2" >> /etc/fstab
 ----
-include::partial$install.ve.in.public.cloud.adoc[]
+include::partials/install.ve.in.public.cloud.adoc[]
 * If you would like to connect to Vantage Express from the Internet, you will need to open up firewall holes to your VM. You should also change the default password to `dbc` user:
 . To change the password for `dbc` user go to your VM and start bteq:
 +
@@ -172,7 +172,7 @@ To stop incurring charges, delete all the resources associated with the resource
 az group delete --no-wait -n tdve-resource-group
 ----
 
-include::partial$next.steps.adoc[]
+include::partials/next.steps.adoc[]
 
 == Further reading
 * link:https://docs.teradata.com/r/Teradata-StudioTM-and-StudioTM-Express-Installation-Guide-17.20[Teradata® Studio™ and Studio™ Express Installation Guide]

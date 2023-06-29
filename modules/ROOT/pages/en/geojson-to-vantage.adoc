@@ -25,7 +25,7 @@ You will need:
 
 * Access to a Teradata Vantage instance.
 +
-include::ROOT:partial$vantage_clearscape_analytics.adoc[]
+include::partials/vantage_clearscape_analytics.adoc[]
 * A Python 3 interpreter
 * A SQL Client
 
@@ -286,6 +286,6 @@ Albany|POINT (117.891604776075155 -35.016946595501224)|Australia
 
 Note that none of the above code does not implement any control procedure or checks to, for example, manage the state of the target tables, manage locking, control error codes, etc... This is meant to be a demonstrations of the available features to acquire and use geospatial reference data.
 
-Consider using https://pypi.org/project/teradatasqlalchemy/[SQLAlchemy ORM] if you are defining your pipeline in Python, xref:dbt.adoc[dbt], or your favorite ELT and orchestration toolset to create your products you can operationalize.
+Consider using https://pypi.org/project/teradatasqlalchemy/[SQLAlchemy ORM] if you are defining your pipeline in Python, xref::en/dbt.adoc[dbt], or your favorite ELT and orchestration toolset to create your products you can operationalize.
 
 You now can know how to get any open geographic dataset and use it to augment your analytics with Teradata Vantage!

@@ -14,7 +14,7 @@ There are situations when you want to quickly validate a machine learning model 
 
 You need access to a Teradata Vantage instance.
 
-include::ROOT:partial$vantage.express.options.adoc[]
+include::partials/vantage.express.options.adoc[]
 
 == Install Vantage Analytics Library
 
@@ -22,7 +22,7 @@ Support for ML in Vantage requires Vantage Analytics Library (VAL). In this sect
 
 1. VAL is distributed as an rpm file. Go to link:https://downloads.teradata.com/download/database/analytics-library[Teradata Downloads] and download the VAL rpm to your local machine.
 2. Upload the file to your Vantage install. If you are running Vantage Express locally, you have many ways to do it:
-* If you installed xref:getting.started.vbox.adoc[Vantage Express on VirtualBox], you should be able to drag & drop the file to the VM's desktop. You can also use `scp` by connecting to port `4422`, e.g.:
+* If you installed xref::en/getting.started.vbox.adoc[Vantage Express on VirtualBox], you should be able to drag & drop the file to the VM's desktop. You can also use `scp` by connecting to port `4422`, e.g.:
 +
 [source, bash, role="content-editable"]
 ----
