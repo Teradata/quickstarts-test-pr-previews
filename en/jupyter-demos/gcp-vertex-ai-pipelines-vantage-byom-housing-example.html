@@ -617,6 +617,7 @@ article.doc {
 
 main.article {
   padding-bottom: 30px;
+  margin-top: 100px;
 }
 
 .toc .toc-menu a:hover {
@@ -626,6 +627,7 @@ main.article {
 .nav-container {
   background: #f5f5f5;
   font-size: 14px;
+  margin-top: 100px;
 }
 
 .breadcrumbs {
@@ -955,6 +957,319 @@ span.search-result-highlight {
     <script>var uiRootPath = '../../_'</script>
   </head>
   <body class="article">
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin-top: 30px;
+  /* Estilos adicionales de la navbar */
+}
+
+
+
+  /**/
+
+  .header-nav{
+    height: 88px;
+    background: #fff;
+    position: relative;
+  }
+  .header-nav-wrapper {
+    position: fixed;
+    top: 0;
+    z-index: 101;
+    width: 100%;
+  }
+  .background-grayLight {
+      background-color: #F6F7Fb;
+  }
+  .header-utility {
+      z-index: 101;
+      justify-content: flex-end;
+      padding: 0 12px;
+      transition: all .5s linear;
+          
+  }
+  .header-utility, header.header-nav {
+      display: flex;
+      width: 100%;
+      position: fixed;
+  }
+  .breadcrumb-nav, .caption, .elq-form .elq-form-text, .elq-form .elq-heading.form-element-form-text, .label-hasOverline, .label-hasUnderline {
+      font-size: .75rem;
+      line-height: 1rem;
+      font-weight: 400;
+  }  
+  .header-utility ul.header-utility__nav {
+    display: flex;
+    align-items: center;
+  }
+  .color-slate {
+    color: #333a3e;
+  }
+
+  .background-grayLight {
+      background: #f6f7fb;
+      color: #333a3e;
+  }
+  .d-flex {
+      display: flex!important;
+  }
+  .me-4 {
+      margin-right: 1rem!important;
+  }
+  ol, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .td-language-selector {
+    position: relative;
+    padding: 6px 0;
+  }
+  .td-language-selector__toggle {
+    color: inherit;
+    align-items: center;
+    position: relative;
+    display: block;
+    width: auto;
+    padding: 0 1.5rem;
+    display: flex;
+    z-index: 1;
+    transition: .25s;
+  }
+  .td-language-selector ul {
+    background: #f6f7fb;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0,0,0,.25);
+    color: #333a3e;
+    position: absolute;
+    top: 150%;
+    right: 0;
+    padding: 28px 32px;
+    overflow: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .25s ease;
+  }
+
+  .nav-2 {
+    font-weight: 400;
+  }
+  .nav-1, .nav-2 {
+    font-family: Poppins,sans-serif;
+    font-size: .875rem;
+    line-height: 1.5rem;
+  }
+.td-language-selector .selected:before {
+    content: " ";
+    width: 0;
+    height: 100%;
+    border: 1px solid #9ca4a8;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-right: 1.5rem;
+}
+.td-language-selector__menu-item {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 0;
+}
+
+.header-utility ul.header-utility__nav a {
+    color: inherit;
+    transition: all .25s ease-in-out 0s;
+    color: #333a3e;
+    text-decoration: underline;
+    -webkit-text-decoration-color: #333a3e;
+    text-decoration-color: #333a3e;
+    transition: .25s;
+}
+@media screen and (min-width: 1025px){
+
+  .container-wide, .media-selector-with-text__main-row-container {
+  padding: 0 13.625rem;
+  /*  padding: 0 6.625rem;*/
+  /*  width: 100%; */
+    max-width: 1440px;
+  }
+  
+  .header-utility ul.header-utility__nav a {
+      text-decoration: none;
+      position: relative;
+  }  
+  .header-utility .header-utility__right {
+    word-break: keep-all;
+  }
+  .d-xl-flex {
+    display: flex!important;
+  }
+
+}
+
+
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+
+  .row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(0*-1);
+    margin-right: calc(1.5rem*-0.5);
+    margin-left: calc(1.5rem*-0.5);
+}
+.align-items-center {
+    align-items: center!important;
+}
+.justify-content-between {
+    justify-content: space-between!important;
+}
+
+.col {
+    flex: 1 0 0%;
+}
+.teradata-logo {
+    margin-top: 25px;
+    width: 148px;
+    height: 28px;
+    display: block;
+}
+.navbar_brand{
+      margin-top: 37px;
+    margin-left: 20px;
+}
+.navbaritem{
+  width: 123px;
+  height: 28px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 28px;
+  /* identical to box height, or 127% */
+
+  display: flex;
+  align-items: center;
+
+  /* Gray/700 */
+
+  color: #333A3E;
+
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.container-links{
+  display: flex;
+  margin-top: 37px;
+  margin-left: 210px;
+/*  font-family: 'Poppins,sans-serif';*/
+}
+.c-link{
+  margin-left: 25px;
+}
+/*dropdown menu button*/
+/*
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+*/
+.dropdown1 {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content1 {
+  display: none;
+  position: absolute;
+  background: #f6f7fb;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0 4px 4px rgba(0,0,0,.25);
+  z-index: 1;
+  top: 150%;
+  padding: 28px 32px;
+  transition: all .25s ease;
+}
+
+.dropdown-content1 a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+/*
+.dropdown a:hover {background-color: #ddd;}
+*/
+.show {display: block;}
+
+
+/*hover*/
+.dpd {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 235px;
+  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+  z-index: 1;
+  
+ /* display: none;
+  background-color: #f9f9f9;
+    position: absolute;
+    min-width: 235px;
+    box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+    z-index: 1;
+    border-radius: 8px;*/
+}
+
+.dropdown-content a {
+  color: black;
+/*  padding: 12px 16px;*/
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dpd:hover .dropdown-content {display: block;}
+
+.dpd:hover .dpdbtn {background-color: #3e8e41;}
+ 
+</style>
 <!-- Google Tag Manager (noscript) -->
 <noscript>
   <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7Q6CLV" height="0" width="0" style="display:none;visibility:hidden"></iframe>
@@ -962,6 +1277,28 @@ span.search-result-highlight {
 <!-- End Google Tag Manager (noscript) -->
 
 <header class="header" role="banner">
+  <nav class="header-utility caption background-grayLight color-slate d-flex">
+  <div class="container-wide d-flex justify-content-around align-items-center">
+    <div class="header-utility__right d-none d-xl-flex">
+      <ul class="header-utility__nav me-4">
+        <li>
+          <a href="https://support.teradata.com" data-celebrus="Utility - Support" data-gtm-category="Header" data-gtm-action="utility nav click" data-gtm-label="Support | https://support.teradata.com" target="_blank" rel="noopener">Teradata.com</a>
+        </li>
+      </ul>
+      <div class="td-language-selector dropdown1">
+        <button onclick="myFunction()" class="td-language-selector__toggle selected">English</button>
+        <div id="myDropdown" class="nav-2 td-language-selector__dropdown dropdown-content1">
+          <li lang="en-US" class="td-language-selector__menu-item" onclick="miFuncion('en')">
+            <a href="#" class="td-language-selector__location no-underline"><strong>English</strong></a>
+          </li>
+          <li lang="ja-JP" class="td-language-selector__menu-item" onclick="miFuncion('ja')">
+            <a href="#" class="td-language-selector__location no-underline">日本</a>
+          </li>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
   <nav class="navbar">
 
     <section class="navbar-top">
@@ -1069,7 +1406,40 @@ span.search-result-highlight {
   </nav>
   <div class="page-blackout" tabindex="-1" aria-hidden="true"></div>
 </header>
-<div class="body">
+
+<script>
+  function miFuncion(lan) {
+    var path = document.location.href;
+    var page = path.split("/");
+    //page[page.length-2] = lan;  
+    if( page[page.length-2] == "en" || page[page.length-2] == "es" || page[page.length-2] == "ja" ) {
+      page[page.length-2] = lan;  
+    }else{
+      arr.splice(page.length-2, 0, lan);  
+    }
+    var salida = page.join('/');
+    window.location.href=salida; 
+  }
+  /* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.td-language-selector__toggle')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content1");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script><div class="body">
 <div class="nav-container" data-component="ROOT" data-version="master">
   <aside class="nav">
     <div class="panels">
@@ -1137,7 +1507,7 @@ span.search-result-highlight {
     <a class="nav-link" href="../advanced-dbt.html">Advanced dbt use cases with Teradata Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../tools-and-utilities/run-bulkloads-efficiently-with-teradata-parallel-transporter.html">Load data with TPT</a>
+    <a class="nav-link" href="../tools-and-utilities/run-bulkloads-efficiently-with-teradata-parallel-transporter.html">Load data with TPT</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../create-parquet-files-in-object-storage.html">Create Parquet files in object storage</a>
@@ -1146,16 +1516,16 @@ span.search-result-highlight {
     <a class="nav-link" href="../other-integrations/execute-airflow-workflows-that-use-dbt-with-teradata-vantage.html">Execute Airflow workflows that use dbt with Teradata Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../cloud-guides/integrate-teradata-vantage-to-salesforce-using-amazon-appflow.html">Connect Teradata Vantage to Salesforce using Amazon Appflow</a>
+    <a class="nav-link" href="../cloud-guides/integrate-teradata-vantage-to-salesforce-using-amazon-appflow.html">Connect Teradata Vantage to Salesforce using Amazon Appflow</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../segment.html">Store events from Twilio Segment</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../cloud-guides/connect-azure-data-share-to-teradata-vantage.html">Connect Azure Data Share to Teradata Vantage</a>
+    <a class="nav-link" href="../cloud-guides/connect-azure-data-share-to-teradata-vantage.html">Connect Azure Data Share to Teradata Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../cloud-guides/integrate-teradata-vantage-with-google-cloud-data-catalog.html">Integrate Teradata Vantage with Google Cloud Data Catalog</a>
+    <a class="nav-link" href="../cloud-guides/integrate-teradata-vantage-with-google-cloud-data-catalog.html">Integrate Teradata Vantage with Google Cloud Data Catalog</a>
   </li>
 </ul>
   </li>
@@ -1170,7 +1540,7 @@ span.search-result-highlight {
     <a class="nav-link" href="../mule.jdbc.example.html">Query Teradata Vantage from a Mule service</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../query-service/send-queries-using-rest-api.html">Send queries using REST API</a>
+    <a class="nav-link" href="../query-service/send-queries-using-rest-api.html">Send queries using REST API</a>
   </li>
 </ul>
   </li>
@@ -1203,37 +1573,22 @@ span.search-result-highlight {
     <a class="nav-link" href="../modelops/using-feast-feature-store-with-teradata-vantage.html">Using Teradata with FEAST</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../cloud-guides/sagemaker-with-teradata-vantage.html">Use AWS SageMaker with Teradata Vantage</a>
+    <a class="nav-link" href="../cloud-guides/sagemaker-with-teradata-vantage.html">Use AWS SageMaker with Teradata Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../cloud-guides/use-teradata-vantage-with-azure-machine-learning-studio.html">Use Teradata Vantage with Azure Machine Learning Studio</a>
+    <a class="nav-link" href="../cloud-guides/use-teradata-vantage-with-azure-machine-learning-studio.html">Use Teradata Vantage with Azure Machine Learning Studio</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../cloud-guides/integrate-teradata-jupyter-extensions-with-google-vertex-ai.html">Integrate Teradata Jupyter extensions with Google Vertex AI</a>
+    <a class="nav-link" href="../cloud-guides/integrate-teradata-jupyter-extensions-with-google-vertex-ai.html">Integrate Teradata Jupyter extensions with Google Vertex AI</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../cloud-guides/integrate-teradata-jupyter-extensions-with-sagemaker.html">Integrate Teradata Jupyter extensions with SageMaker notebook instance</a>
+    <a class="nav-link" href="../cloud-guides/integrate-teradata-jupyter-extensions-with-sagemaker.html">Integrate Teradata Jupyter extensions with SageMaker notebook instance</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../business-intelligence/create-stunning-visualizations-in-power-bi-using-data-from-teradata-vantage.html">Create Vizualizations in Power BI using Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../other-integrations/integrate-teradata-vantage-with-knime.html">Integrate Teradata Vantage with KNIME Analytics Platform</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">Demos</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">Financial</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../jupyter-demos/gcp-vertex-ai-pipelines-vantage-byom-housing-example.html">Google Cloud Vertex AI Pipelines Vantage BYOM Housing Example</a>
-  </li>
-</ul>
   </li>
 </ul>
   </li>
@@ -1275,7 +1630,23 @@ span.search-result-highlight {
 </ul>
   </nav>
 </div>
-<div class="nav-panel-explore" data-panel="explore">
+
+<script>
+  var path = document.location.href;
+  var language = path.match(/\/(en|es|ja)\//)[1];
+
+  document.getElementById(language).style.visibility = 'visible';
+  document.getElementById(language).style.display = 'block';
+  var parts = path.split('/');
+  var pagina = parts[parts.length-1];
+
+  var elementosMenu = document.querySelectorAll('.nav-item a');
+  elementosMenu.forEach(function(elemento) {
+    if (elemento.href === path) {
+      elemento.parentNode.classList.add('is-current-page');
+    }
+  });
+</script><div class="nav-panel-explore" data-panel="explore">
   <div class="context" style="visibility: hidden;">
     <span class="title">Getting Started Guides</span>
     <span class="version">master</span>
@@ -1316,7 +1687,585 @@ span.search-result-highlight {
 </aside>
 <article class="doc">
 <h1 class="page">Google Cloud Vertex AI Pipelines Vantage BYOM Housing Example</h1>
-Unresolved include directive in modules/ROOT/pages/en/jupyter-demos/gcp-vertex-ai-pipelines-vantage-byom-housing-example.adoc - include::partial$vertex-pipelines-housing-example-byom.html[]
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/Teradata/jupyter-demos/blob/main/UseCases/vertex_pipelines_housing_example-BYOM/vertex_pipelines_housing_example-BYOM.ipyn">Get this notebook in .ipynb format.</a></p>
+</div>
+<div class="paragraph">
+<p>Vertex AI is Google&#8217;s single environment for data scientists to develop and deploy ML models, from experimentation, to deployment, to managing and monitoring models. In this tutorial, we will show how to integrate Vantage Analytics capabilites in Vertex AI ML Pipelines. We&#8217;ll create two pipelines:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Training - the first will be a three step pipeline to train and deploy a model; the first step transforms data in Vantage and then exports a file for training, the second step trains a model using scikit-learn, and the final step deploys the model to Vantage using Bring Your Own Model (BYOM) feature of Teradata Vantage.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/jupyter-demos/pipeline1.png" alt="image">
+</div>
+</div>
+</li>
+<li>
+<p>Scoring - the second pipeline will use the model created by the the first pipeline to score new data stored in a table on Vantage.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/jupyter-demos/pipeline2.png" alt="image">
+</div>
+</div>
+<div class="paragraph">
+<p>Both pipelines are very simple, but the first pipeline could be triggered to retrain a model with new data when the production model has drifted. The second pipeline could be run on a regular schedule when new data for scoring was available.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Google Cloud account - register <a href="https://cloud.google.com/gcp">here</a></p>
+</li>
+<li>
+<p>Kaggle account - register <a href="https://www.kaggle.com/account/login?phase=startRegisterTab">here</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setting_up_vantage_and_loading_data"><a class="anchor" href="#_setting_up_vantage_and_loading_data"></a>Setting up Vantage and loading data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Setup the notebook environment</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>import sys
+!{sys.executable} -m pip install --upgrade --force-reinstall ipython-sql
+!{sys.executable} -m pip install teradatasqlalchemy teradataml kaggle ipython-sql kfp</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Setup a Vantage instance</strong></p>
+</div>
+<div class="paragraph">
+<p>Follow the <a href="../vantage.express.gcp.html" class="xref page">Run Vantage Express on Google</a> Cloud how-to to get Vantage setup. Make sure to follow the instructions to open the VM up to the Internet.</p>
+</div>
+<div class="paragraph">
+<p><strong>Create GCS bucket</strong></p>
+</div>
+<div class="paragraph">
+<p>You will need a GCS bucket to store artifacts managed by KubeFlow.</p>
+</div>
+<div class="paragraph">
+<p>Define the bucket name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>BUCKET_NAME = "&lt;your-bucket-name&gt;"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the bucket doesn&#8217;t exist, go ahead and create it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>!gsutil ls -b gs://$BUCKET_NAME || gsutil mb gs://$BUCKET_NAME</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Give permissions to Vertex AI to access your bucket</strong></p>
+</div>
+<div class="paragraph">
+<p>Go to <a href="https://console.cloud.google.com/iam-admin/iam">IAM tab in GCS console</a> and assign <mark>Storage Admin</mark> role to your default Compute Engine. The principal of the default Compute Engine account looks like this: <mark>&lt;project-id&gt;-<a href="mailto:compute@developer.gserviceaccount.com">compute@developer.gserviceaccount.com</a></mark>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Download sample data</strong></p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll use the Boston Housing dataset which can be obtained from <a href="https://www.kaggle.com/">Kaggle</a>. Login to your Kaggle account. In the top right corner click on your user icon and select <mark>Account</mark>. Find API section and click on Create <mark>New API Token</mark>. This will produce <mark>kaggle.json</mark> file. Open <mark>kaggle.json</mark> and copy the username and key. Substitute the values in the cell and run it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%env KAGGLE_USERNAME=&lt;your-kaggle-username&gt;
+%env KAGGLE_KEY=&lt;your-kaggle-key&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>!kaggle datasets download -f housing.csv vikrishnan/boston-house-prices</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Load training data to Vantage</strong></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s setup <mark>DATABASE_URL</mark> environment variable that will point to your instance of Vantage. Make sure that you default to mldb database where BYOM package is installed, e.g.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>DATABASE_URL='teradatasql://dbc:dbc@34.121.78.209/mldb'
+%env DATABASE_URL=$DATABASE_URL</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>import pandas
+import os
+
+df=pandas.read_fwf('housing.csv', names=['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT', 'MEDV'])
+df.to_sql('housing', con=DATABASE_URL, index=False)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For this tutiorial we need a table to store the trained model and another table with some new data that we want to score with our model. Use teradatasql to execute the following SQL on your Vantage instance.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%%sql
+CREATE SET TABLE demo_models (model_id VARCHAR (30), model BLOB) PRIMARY INDEX (model_id);
+CREATE SET TABLE test_housing (ID INTEGER, CRIM FLOAT, ZN FLOAT,INDUS FLOAT,CHAS INTEGER,NOX FLOAT,RM FLOAT,
+    AGE FLOAT,DIS FLOAT, RAD INTEGER,TAX INTEGER,PTRATIO FLOAT,B FLOAT,LSTAT FLOAT) PRIMARY INDEX (CRIM);
+INSERT INTO test_housing (ID, CRIM, ZN, INDUS, CHAS, NOX, RM, AGE, DIS, RAD, TAX, PTRATIO, B, LSTAT)
+    VALUES (1,.02,0.0,7.07,0,.46,6.4,78.9,4.9,2,242,17.8,396.9,9.14);</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_first_pipeline_to_train_and_deploy_a_model_using_kubeflow"><a class="anchor" href="#_the_first_pipeline_to_train_and_deploy_a_model_using_kubeflow"></a>The first pipeline to train and deploy a model using Kubeflow</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now we are ready to create the components in the pipeline. Vertex AI Pipelines can run pipelines built using the Kubeflow Pipelines SDK or TensorFlow Extended. We&#8217;ll be using the Kubeflow Pipelines SDK for this simple example using scikit-learn.</p>
+</div>
+<div class="paragraph">
+<p>In this example we will create the following three components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>read_data_from_vantage</p>
+<div class="ulist">
+<ul>
+<li>
+<p>input: ipaddr of the VM hosting Vantage</p>
+</li>
+<li>
+<p>output: csv file with the data for training and testing</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>train_model</p>
+<div class="ulist">
+<ul>
+<li>
+<p>input: csv file with data for training and testing</p>
+</li>
+<li>
+<p>output: file containing the model</p>
+</li>
+<li>
+<p>output: Metric artifact with model performance</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>deploy_model</p>
+<div class="ulist">
+<ul>
+<li>
+<p>input: file containing the model</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>First, import the Kubeflow Pipeline component and dsl packages.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>import kfp.v2.dsl as dsl
+from kfp.v2.dsl import (
+    component,
+    Input,
+    Output,
+    Dataset,
+    Model,
+    Metrics,
+)</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_the_component_that_reads_data_from_vantage"><a class="anchor" href="#_create_the_component_that_reads_data_from_vantage"></a>Create the component that reads data from Vantage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The first component reads data from a Vantage warehouse (see above and make sure you have set up Vantage Express in Google Cloud including opening up a firewall to the VM so you can access Vantage from the Internet.)</p>
+</div>
+<div class="paragraph">
+<p>The component connects to Vantage using the connection string passed as an input parameter, reads the rows from the table mldb.housing in Vantage and then outputs the data to an <mark>Output[Dataset]</mark>. The Output is a temporary file used to pass data between components (see more about passing data between components <a href="https://www.kubeflow.org/docs/components/pipelines/sdk-v2/python-function-components/#passing-artifacts-by-file">here</a>).</p>
+</div>
+<div class="paragraph">
+<p>The component uses sqlalchemy to talk to Teradata. Each component is run in a separate container on Kubernetes so all import statements need to be done within the component. We have created a base image with teradatasql already installed. When you pass base_image='python' the component will use that image to create a container. <mark>packages_to_install</mark> parameter defines what other packages the component needs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@component(base_image='python', packages_to_install=['teradatasqlalchemy'])
+def read_data_from_vantage(
+    connection_string: str,
+    output_file: Output[Dataset]
+):
+    import sqlalchemy
+
+    file_name = output_file.path
+    engine = sqlalchemy.create_engine(connection_string)
+
+    with engine.connect() as con:
+        rs = con.execute('SELECT * FROM housing')
+        with open(output_file.path, 'w') as output_file:
+            output_file.write('CRIM,ZN,INDUS,CHAS,NOX,RM,AGE,DIS,RAD,TAX,PTRATIO,B,LSTAT,MEDV\n')
+            for row in rs:
+                output_file.write(','.join([str(i) for i in row]) + '\n')</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_the_train_model_component"><a class="anchor" href="#_create_the_train_model_component"></a>Create the train model component</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Next we&#8217;ll create a component to train a model with the training data.</p>
+</div>
+<div class="paragraph">
+<p>The input into this component is the file from the previous component. The output is the file with the trained model using joblib.dump and a file with the test data.</p>
+</div>
+<div class="paragraph">
+<p>The component will use scikit-learn and pandas so we need to pass <mark>packages_to_install=['pandas==1.3.5','scikit-learn']</mark> - this will tell Kubeflow to install the packages when the container is created.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@component(base_image='teradata/python-sklearn2pmml', packages_to_install=['pandas==1.3.5','scikit-learn','sklearn-pandas==1.5.0'])
+def train_model(
+    input_file : Input[Dataset],
+    output_model: Output[Model],
+    output_metrics: Output[Metrics]
+):
+    import pandas as pd
+    from sklearn.model_selection import train_test_split
+    from sklearn.ensemble import RandomForestRegressor
+    from sklearn.preprocessing import StandardScaler
+    from sklearn import metrics
+    from sklearn_pandas import DataFrameMapper
+    import joblib
+    from sklearn2pmml.pipeline import PMMLPipeline
+    from sklearn2pmml import sklearn2pmml
+
+    df = pd.read_csv(input_file.path)
+
+    train, test = train_test_split(df, test_size = .33)
+    train = train.apply(pd.to_numeric, errors='ignore')
+    test = test.apply(pd.to_numeric, errors='ignore')
+
+    target = 'MEDV'
+    features = train.columns.drop(target)
+
+
+    pipeline = PMMLPipeline([
+    ("mapping", DataFrameMapper([
+    (['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT'], StandardScaler())
+    ])),
+    ("rfc", RandomForestRegressor(n_estimators = 100, random_state = 0))
+    ])
+
+    pipeline.fit(train[features], train[target])
+    y_pred = pipeline.predict(test[features])
+
+    metric_accuracy = metrics.mean_squared_error(y_pred,test[target])
+    output_metrics.log_metric('accuracy', metric_accuracy)
+    output_model.metadata['accuracy'] = metric_accuracy
+
+    joblib.dump(pipeline, output_model.path)</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_component_to_deploy_model"><a class="anchor" href="#_create_component_to_deploy_model"></a>Create component to deploy model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The last component loads the model and tests it on the test data. The Output[Metrics] creates an artifact with the models performance and can be visualize in the Runtime Graph.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@component(base_image='teradata/python-sklearn2pmml')
+def deploy_model(
+    connection_string: str,
+    input_model : Input[Model],
+):
+    import sqlalchemy
+    import teradataml as tdml
+    import joblib
+    from sklearn2pmml.pipeline import PMMLPipeline
+    from sklearn2pmml import sklearn2pmml
+
+    engine = sqlalchemy.create_engine(connection_string)
+    tdml.create_context(tdsqlengine = engine)
+
+    pipeline = joblib.load(input_model.path)
+
+    sklearn2pmml(pipeline, "test_local.pmml", with_repr = True)
+
+    model_id = 'housing_rf'
+    model_file = 'test_local.pmml'
+    table_name = 'demo_models'
+
+    tdml.configure.byom_install_location = "mldb"
+
+    try:
+        res = tdml.save_byom(model_id = model_id, model_file = model_file, table_name = table_name)
+    except Exception as e:
+        # if our model exists, delete and rewrite
+        if str(e.args).find('TDML_2200') &gt;= 1:
+            res = tdml.delete_byom(model_id = model_id, table_name = table_name)
+            res = tdml.save_byom(model_id = model_id, model_file = model_file, table_name = table_name)
+            pass
+        else:
+            raise</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_function_for_executing_the_pipeline"><a class="anchor" href="#_create_function_for_executing_the_pipeline"></a>Create function for executing the pipeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now we&#8217;ll create a function to execute each component in the pipeline.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@dsl.pipeline(
+   name='run-vantage-pipeline',
+   description='An example pipeline that connects to Vantage.',
+)
+def run_vantage_pipeline_vertex(
+   connection_string: str
+):
+    data_file = read_data_from_vantage(connection_string).output
+    test_model_data = train_model(data_file)
+    deploy_model(connection_string,test_model_data.outputs['output_model'])</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Compile the pipeline. The pipline will be saved in a json file with the name provided as the package_path.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>from kfp.v2 import compiler
+compiler.Compiler().compile(pipeline_func=run_vantage_pipeline_vertex,
+    package_path='train_housing_pipeline.json')</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now use the Vertex AI client to execute the pipeline. Import the google.cloud.aiplatform package. Vertex AI needs a Cloud Storage bucket to for temporary files. Create a new job using the json file above and pass the ipaddr as the parameter. Then submit the job.</p>
+</div>
+<div class="paragraph">
+<p>When the job starts a link will appear that will take you to the Runtime Graph.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>import google.cloud.aiplatform as aip
+
+pipeline_root_path = 'gs://' + BUCKET_NAME
+
+job = aip.PipelineJob(
+    display_name="housing_training_deploy",
+    template_path="train_housing_pipeline.json",
+    pipeline_root=pipeline_root_path,
+    parameter_values={
+        'connection_string': DATABASE_URL
+    }
+)
+
+job.submit()</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_inspect_model_metrics"><a class="anchor" href="#_inspect_model_metrics"></a>Inspect model metrics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When the pipeline has completed running (each component in the graph should have a green check mark). You can click on each component to see details of the execution and the logs created. If you click on the output_metrics artifact, in the Pipeline run analysis window the Node Info will show the accuracy of the model. Yyou can learn more about other metrics you can pass and visulation using the Metrics artifict <a href="https://www.kubeflow.org/docs/components/pipelines/sdk/output-viewer/#introduction">here</a>.)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_the_deployed_model"><a class="anchor" href="#_test_the_deployed_model"></a>Test the deployed model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s test the model we have just deployed by scoring some new data. We&#8217;ll use the teradataml driver to retrieve the saved model and score the rows in a table with new data.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>import teradataml as tdml
+import sqlalchemy
+import os
+
+engine = sqlalchemy.create_engine(DATABASE_URL)
+eng = tdml.create_context(tdsqlengine = engine)
+
+#indicate the database that BYOM is using
+tdml.configure.byom_install_location = "mldb"
+
+tdf_test = tdml.DataFrame('test_housing')
+
+modeldata = tdml.retrieve_byom("housing_rf", table_name="demo_models")
+
+predictions = tdml.PMMLPredict(
+        modeldata = modeldata,
+        newdata = tdf_test,
+        accumulate = ['ID']
+        )
+predictions.result.to_pandas()</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_a_new_pipeline_to_score_new_data"><a class="anchor" href="#_create_a_new_pipeline_to_score_new_data"></a>Create a new pipeline to score new data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This pipeline will have only one component that uses the teradatasql driver to execute a SQL query that retrieves the model from the demo_model table and scores the rows in the test_housing table.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@component(base_image='teradata/python-sklearn2pmml', packages_to_install=['pandas==1.3.5','scikit-learn'])
+def score_new_data(
+    connection_string: str,
+    model_name: str,
+    model_table: str,
+    data_table: str,
+    prediction_table: str
+):
+    import teradataml as tdml
+    import sqlalchemy
+
+    engine = sqlalchemy.create_engine(connection_string)
+
+    with engine.connect() as con:
+        con.execute(f'CREATE TABLE {prediction_table} AS (SELECT * FROM mldb.PMMLPredict ( ON {data_table} ON (SELECT * FROM {model_table} where model_id=\'{model_name}\') DIMENSION USING Accumulate (\'ID\')) AS td ) WITH DATA')</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The run_new_data_score pipeline takes the following parameters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>model_name: ID of the model</p>
+</li>
+<li>
+<p>model_table: the name of the table storing the model</p>
+</li>
+<li>
+<p>data_table: the name of the table with new data to score</p>
+</li>
+<li>
+<p>prediction_table: the name of the table to store the scoring results</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When the pipeline is executed the dashboard will provide fields to enter the values you want to use.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@dsl.pipeline(
+   name='new-data-pipeline',
+   description='An example of a component that scores new data with a saved model.',
+)
+def run_new_data_score(
+    connection_string: str,
+    model_name: str,
+    model_table: str,
+    data_table: str,
+    prediction_table: str
+):
+    score_new_data(DATABASE_URL,model_name,model_table,data_table,prediction_table)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To compile the pipeline run the following code. The pipeline will be saved in score_new_data_pipeline_sql.json file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>compiler.Compiler().compile(pipeline_func=run_new_data_score,
+    package_path='score_new_data_pipeline_sql.json')</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We will now execute the pipeline in Vertex AI Pipelines.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>import google.cloud.aiplatform as aip
+
+pipeline_root_path = 'gs://' + BUCKET_NAME
+
+job = aip.PipelineJob(
+    display_name="new_data_housing",
+    template_path="score_new_data_pipeline_sql.json",
+    pipeline_root=pipeline_root_path,
+    parameter_values={
+        'connection_string': DATABASE_URL,
+        'model_name': 'housing_rf',
+        'model_table': 'demo_models',
+        'data_table': 'test_housing',
+        'prediction_table': 'housing_predictions'
+    }
+)
+
+job.submit()</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the job completes, you can view the batch predictions with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%%sql
+SELECT * FROM housing_predictions;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cleanup"><a class="anchor" href="#_cleanup"></a>Cleanup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To stop incurring charges you need to clean up the following resources:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Delete the Vantage Express VM - go to the list of Compute Engine instances and selecting the instance with Vantage Express and then click on Delete.</p>
+</li>
+<li>
+<p>Delete the storage bucket you configured</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="page-feedback bottom">
   <span>Did this page help?</span>
   <i class="far fa-thumbs-up click-icon" name="feedback-icon" onclick="toggleFeedbackWidgets(this)"></i>
