@@ -1,2 +1,0 @@
-#!/bin/bash
-docker run -v $(pwd):/antora -e CI=true -e FORCE_SHOW_EDIT_PAGE_LINK=true antora/antora:3.0.1 antora-playbook.yml
