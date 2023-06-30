@@ -1,0 +1,487 @@
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin-top: 30px;
+  /* Estilos adicionales de la navbar */
+}
+
+
+
+  /**/
+
+  .header-nav{
+    height: 88px;
+    background: #fff;
+    position: relative;
+  }
+  .header-nav-wrapper {
+    position: fixed;
+    top: 0;
+    z-index: 101;
+    width: 100%;
+  }
+  .background-grayLight {
+      background-color: #F6F7Fb;
+  }
+  .header-utility {
+      z-index: 101;
+      justify-content: flex-end;
+      padding: 0 12px;
+      transition: all .5s linear;
+          
+  }
+  .header-utility, header.header-nav {
+      display: flex;
+      width: 100%;
+      position: fixed;
+  }
+  .breadcrumb-nav, .caption, .elq-form .elq-form-text, .elq-form .elq-heading.form-element-form-text, .label-hasOverline, .label-hasUnderline {
+      font-size: .75rem;
+      line-height: 1rem;
+      font-weight: 400;
+  }  
+  .header-utility ul.header-utility__nav {
+    display: flex;
+    align-items: center;
+  }
+  .color-slate {
+    color: #333a3e;
+  }
+
+  .background-grayLight {
+      background: #f6f7fb;
+      color: #333a3e;
+  }
+  .d-flex {
+      display: flex!important;
+  }
+  .me-4 {
+      margin-right: 1rem!important;
+  }
+  ol, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .td-language-selector {
+    position: relative;
+    padding: 6px 0;
+  }
+  .td-language-selector__toggle {
+    color: inherit;
+    align-items: center;
+    position: relative;
+    display: block;
+    width: auto;
+    padding: 0 1.5rem;
+    display: flex;
+    z-index: 1;
+    transition: .25s;
+  }
+  .td-language-selector ul {
+    background: #f6f7fb;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0,0,0,.25);
+    color: #333a3e;
+    position: absolute;
+    top: 150%;
+    right: 0;
+    padding: 28px 32px;
+    overflow: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .25s ease;
+  }
+
+  .nav-2 {
+    font-weight: 400;
+  }
+  .nav-1, .nav-2 {
+    font-family: Poppins,sans-serif;
+    font-size: .875rem;
+    line-height: 1.5rem;
+  }
+.td-language-selector .selected:before {
+    content: " ";
+    width: 0;
+    height: 100%;
+    border: 1px solid #9ca4a8;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-right: 1.5rem;
+}
+.td-language-selector__menu-item {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 0;
+}
+
+.header-utility ul.header-utility__nav a {
+    color: inherit;
+    transition: all .25s ease-in-out 0s;
+    color: #333a3e;
+    text-decoration: underline;
+    -webkit-text-decoration-color: #333a3e;
+    text-decoration-color: #333a3e;
+    transition: .25s;
+}
+@media screen and (min-width: 1025px){
+
+  .container-wide, .media-selector-with-text__main-row-container {
+  padding: 0 13.625rem;
+  /*  padding: 0 6.625rem;*/
+  /*  width: 100%; */
+    max-width: 1440px;
+  }
+  
+  .header-utility ul.header-utility__nav a {
+      text-decoration: none;
+      position: relative;
+  }  
+  .header-utility .header-utility__right {
+    word-break: keep-all;
+  }
+  .d-xl-flex {
+    display: flex!important;
+  }
+
+}
+
+
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+
+  .row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(0*-1);
+    margin-right: calc(1.5rem*-0.5);
+    margin-left: calc(1.5rem*-0.5);
+}
+.align-items-center {
+    align-items: center!important;
+}
+.justify-content-between {
+    justify-content: space-between!important;
+}
+
+.col {
+    flex: 1 0 0%;
+}
+.teradata-logo {
+    margin-top: 25px;
+    width: 148px;
+    height: 28px;
+    display: block;
+}
+.navbar_brand{
+      margin-top: 37px;
+    margin-left: 20px;
+}
+.navbaritem{
+  width: 123px;
+  height: 28px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 28px;
+  /* identical to box height, or 127% */
+
+  display: flex;
+  align-items: center;
+
+  /* Gray/700 */
+
+  color: #333A3E;
+
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.container-links{
+  display: flex;
+  margin-top: 37px;
+  margin-left: 210px;
+/*  font-family: 'Poppins,sans-serif';*/
+}
+.c-link{
+  margin-left: 25px;
+}
+/*dropdown menu button*/
+/*
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+*/
+.dropdown1 {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content1 {
+  display: none;
+  position: absolute;
+  background: #f6f7fb;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0 4px 4px rgba(0,0,0,.25);
+  z-index: 1;
+  top: 150%;
+  padding: 28px 32px;
+  transition: all .25s ease;
+}
+
+.dropdown-content1 a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+/*
+.dropdown a:hover {background-color: #ddd;}
+*/
+.show {display: block;}
+
+
+/*hover*/
+.dpd {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 235px;
+  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+  z-index: 1;
+  
+ /* display: none;
+  background-color: #f9f9f9;
+    position: absolute;
+    min-width: 235px;
+    box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+    z-index: 1;
+    border-radius: 8px;*/
+}
+
+.dropdown-content a {
+  color: black;
+/*  padding: 12px 16px;*/
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dpd:hover .dropdown-content {display: block;}
+
+.dpd:hover .dpdbtn {background-color: #3e8e41;}
+ 
+</style>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7Q6CLV" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header class="header" role="banner">
+  <nav class="header-utility caption background-grayLight color-slate d-flex">
+  <div class="container-wide d-flex justify-content-around align-items-center">
+    <div class="header-utility__right d-none d-xl-flex">
+      <ul class="header-utility__nav me-4">
+        <li>
+          <a href="https://support.teradata.com" data-celebrus="Utility - Support" data-gtm-category="Header" data-gtm-action="utility nav click" data-gtm-label="Support | https://support.teradata.com" target="_blank" rel="noopener">Teradata.com</a>
+        </li>
+      </ul>
+      <div class="td-language-selector dropdown1">
+        <button onclick="myFunction()" class="td-language-selector__toggle selected">English</button>
+        <div id="myDropdown" class="nav-2 td-language-selector__dropdown dropdown-content1">
+          <li lang="en-US" class="td-language-selector__menu-item" onclick="miFuncion('en')">
+            <a href="#" class="td-language-selector__location no-underline"><strong>English</strong></a>
+          </li>
+          <li lang="ja-JP" class="td-language-selector__menu-item" onclick="miFuncion('ja')">
+            <a href="#" class="td-language-selector__location no-underline">日本</a>
+          </li>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+  <nav class="navbar">
+
+    <section class="navbar-top">
+      <div class="navbar-logo">
+        <a href="https://www.teradata.com/">
+          <svg width="103" height="20" viewBox="0 0 696 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+              <title>Teradata</title>
+              <desc>Copyright Teradata</desc>
+              <defs></defs>
+              <g id="teradata" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="text" fill="#394951">
+                      <path d="M78.882,72.796 L123.941,72.796 C120.763,60.83 111.788,55.595 101.878,55.595 C92.53,55.595 81.873,61.204 78.882,72.796 Z M149.182,90.184 L78.134,90.184 C80.564,103.646 90.099,111.873 101.504,111.873 C108.796,111.873 117.957,110.937 124.689,99.533 L146.751,104.206 C138.524,123.652 121.884,133 101.504,133 C75.142,133 53.64,112.994 53.64,83.64 C53.64,54.286 75.142,34.093 101.878,34.093 C126.745,34.093 148.246,53.351 149.182,81.771 L149.182,90.184 Z" id="Fill-1"></path>
+                      <path d="M387.843,83.64 C387.843,66.439 374.568,55.595 361.294,55.595 C346.336,55.595 335.118,66.439 335.118,83.64 C335.118,100.841 346.336,111.498 361.294,111.498 C374.568,111.498 387.843,100.841 387.843,83.64 Z M412.523,130.195 L387.843,130.195 L387.843,122.156 C380.364,129.074 370.081,133 356.993,133 C333.248,133 311.186,112.994 311.186,83.64 C311.186,54.286 333.248,34.093 356.993,34.093 C370.081,34.093 380.364,38.019 387.843,44.937 L387.843,0.937 L412.523,0.937 L412.523,130.195 Z" id="Fill-3"></path>
+                      <path d="M630.3,92.427 C630.3,104.393 618.894,113.368 605.807,113.368 C596.271,113.368 589.915,108.88 589.915,101.962 C589.915,95.606 595.149,91.306 603.003,91.306 L630.3,91.306 L630.3,92.427 Z M614.407,37.117 L614.407,37.093 L580.299,37.093 L580.299,57.658 L614.407,57.658 C623.943,57.658 630.3,61.765 630.3,71.113 L630.3,72.61 L603.377,72.61 C579.818,72.61 566.356,84.576 566.356,102.524 C566.356,120.846 580.566,133 601.881,133 C614.595,133 623.943,128.7 630.3,122.53 L630.3,130.195 L653.858,130.195 L653.858,69.244 C653.858,47.082 638.243,37.617 614.407,37.117 Z" id="Fill-4"></path>
+                      <path d="M484.378,92.427 C484.378,104.393 472.973,113.368 459.885,113.368 C450.349,113.368 443.992,108.88 443.992,101.962 C443.992,95.606 449.227,91.306 457.08,91.306 L484.378,91.306 L484.378,92.427 Z M468.485,37.117 L468.485,37.093 L434.377,37.093 L434.377,57.658 L468.485,57.658 C478.02,57.658 484.378,61.765 484.378,71.113 L484.378,72.61 L457.454,72.61 C433.895,72.61 420.434,84.576 420.434,102.524 C420.434,120.846 434.644,133 455.958,133 C468.672,133 478.02,128.7 484.378,122.53 L484.378,130.195 L507.935,130.195 L507.935,69.244 C507.935,47.082 492.321,37.617 468.485,37.117 Z" id="Fill-5"></path>
+                      <path d="M279.3,92.427 C279.3,104.393 267.894,113.368 254.807,113.368 C245.271,113.368 238.914,108.88 238.914,101.962 C238.914,95.606 244.15,91.306 252.003,91.306 L279.3,91.306 L279.3,92.427 Z M263.408,37.117 L263.408,37.093 L229.299,37.093 L229.299,57.658 L263.408,57.658 C272.943,57.658 279.3,61.765 279.3,71.113 L279.3,72.61 L252.376,72.61 C228.818,72.61 215.356,84.576 215.356,102.524 C215.356,120.846 229.566,133 250.881,133 C263.595,133 272.943,128.7 279.3,122.53 L279.3,130.195 L302.858,130.195 L302.858,69.244 C302.858,47.082 287.244,37.617 263.408,37.117 Z" id="Fill-6"></path>
+                      <path d="M216.11,37.026 C200.966,37.026 190.121,43.069 182.643,53.913 L182.643,36.899 L157.963,36.899 L157.963,130.197 L182.643,130.197 L182.643,100.095 C182.643,74.106 193.113,57.776 215.923,57.776 L217.044,57.776 L217.044,37.029 C216.741,37.027 216.431,37.026 216.11,37.026" id="Fill-7"></path>
+                      <path d="M48.982,107.707 C45.229,109.115 41.291,110.002 38.328,110.002 C30.102,110.002 24.68,105.142 24.68,93.923 L24.68,57.09 L49.982,57.09 L49.982,36.898 L24.68,36.898 L24.68,14.007 L0,14.007 L0,95.793 C0,121.408 14.584,133 36.646,133 C44.438,133 51.879,131.338 61.481,126.199 C56.364,121.123 51.667,114.8 48.982,107.707" id="Fill-8"></path>
+                      <path d="M558.509,109.788 C557.521,109.926 556.586,110.002 555.733,110.002 C547.507,110.002 542.085,105.142 542.085,93.923 L542.085,57.09 L568.068,57.09 L568.068,36.898 L542.085,36.898 L542.085,14.007 L517.404,14.007 L517.404,95.793 C517.404,121.408 531.988,133 554.051,133 C559.44,133 564.302,132.206 569.964,130.017 C562.645,124.774 559.799,116.281 558.509,109.788" id="Fill-9"></path>
+                  </g>
+                  <path d="M695.029,116.028 C695.029,124.853 688.257,131.624 678.817,131.624 C669.377,131.624 662.605,124.853 662.605,116.028 C662.605,107.615 669.377,100.227 678.817,100.227 C688.257,100.227 695.029,107.615 695.029,116.028" id="Fill-11" fill="#E46C42"></path>
+              </g>
+          </svg>
+        </a>
+      </div>
+
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://developer.teradata.com/">Developers</a>
+      </div>
+
+      <button class="header-nav-mobile__menu-icon" role="button" aria-label="Click or Press enter to open menu" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </section>
+
+    <section class="navbar-menu">
+      <div class="header-nav-mobile__menu">
+        <ul>
+          <li class="header-nav-mobile__menu-item">
+            <header class="header-nav-mobile__menu-item__header">
+              <a href="{{siteRootPath}}/index.html">Getting Started</a>
+            </header>
+          </li>
+          <li class="header-nav-mobile__menu-item has-sub-items">
+            <header class="header-nav-mobile__menu-item__header i-alignment">
+              <a href="https://docs.teradata.com/">Docs</a>
+              <img class="navbar-arrow" src='{{uiRootPath}}/img/icons/arrow_drop_down.svg' alt="down arrow" title="Docs">
+            </header>
+            <div>
+              <div class="header-nav-mobile__menu-item__links">
+                <ul class="ul-color">
+                  <li><a href="https://docs.teradata.com/p/VantageCloud/Lake" class="dropdown-item">VantageCloud Lake Documentation</a></li>
+                  <li><a href="https://docs.teradata.com/" class="dropdown-item">All Documentation</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="header-nav-mobile__menu-item">
+            <header class="header-nav-mobile__menu-item__header">
+              <a href="https://downloads.teradata.com/">Downloads</a>
+            </header>
+          </li>
+          <li class="header-nav-mobile__menu-item has-sub-items">
+            <header class="header-nav-mobile__menu-item__header i-alignment">
+              <a href="https://support.teradata.com/community ">Community</a>
+              <img class="navbar-arrow" src='{{uiRootPath}}/img/icons/arrow_drop_down.svg' alt="down arrow" title="Community">
+            </header>
+            <div>
+              <div class="header-nav-mobile__menu-item__links">
+                <ul class="ul-color">
+                  <li>
+                    <a href="https://support.teradata.com/community?_gl=1*1uhhzsp*_ga*MTU2NjYwMTU5OC4xNjYxNDc0NDcz*_ga_7PE2TMW3FE*MTY3NDI0NDY1Mi4zNS4wLjE2NzQyNDQ2NTUuMC4wLjA." class="dropdown-item">Teradata Community</a>
+                  </li>
+                  <li>
+                    <a href="https://medium.com/teradata" title="Technical Medium Blogs" target="_blank" class="dropdown-item">Technical Medium Blogs
+                      <img src='{{uiRootPath}}/img/icons/external-symbol.svg' class="ext-symbol">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Teradata" title="Teradata on GitHub" target="_blank" class="dropdown-item">GitHub
+                      <img src='{{uiRootPath}}/img/icons/external-symbol.svg' class="ext-symbol">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://stackoverflow.com/questions/tagged/teradata" title="Stack Overflow Teradata questions" target="_blank" class="dropdown-item">Stack Overflow
+                      <img src='{{uiRootPath}}/img/icons/external-symbol.svg' class="ext-symbol">
+                    </a>
+                  </li>               
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="navbar-search">
+      {{#if env.SITE_SEARCH_PROVIDER}}
+      {{#if (ne page.layout "landing-page")}}
+      <div class="navbar-item">
+        <input id="search-input" type="text" placeholder="Search Getting Started">
+      </div>
+      {{/if}}
+      {{/if}}
+    </section>
+  </nav>
+  <div class="page-blackout" tabindex="-1" aria-hidden="true"></div>
+</header>
+
+<script>
+  function miFuncion(lan) {
+    var path = document.location.href;
+    var page = path.split("/");
+    //page[page.length-2] = lan;  
+    if( page[page.length-2] == "en" || page[page.length-2] == "es" || page[page.length-2] == "ja" ) {
+      page[page.length-2] = lan;  
+    }else{
+      arr.splice(page.length-2, 0, lan);  
+    }
+    var salida = page.join('/');
+    window.location.href=salida; 
+  }
+  /* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.td-language-selector__toggle')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content1");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>

@@ -1,0 +1,329 @@
+= Docker を使用して Regulus をインストールおよび構成する
+:experimental:
+:page-author: Thripti Aravind
+:page-email: thripti.aravind@teradata.com
+:page-revdate: 2023 年 4 月 10 日
+:description: Docker Engine と Docker Compose を使用して Regulus Workspaces をインストールおよび構成する方法を学びます。
+:keywords: Regulus、ワークスペース、クエリーエンジン
+:page-image-directory: install-regulus-docker-image
+
+IMPORTANT: この製品はプレビュー段階にあり、変更される可能性があります。Regulus に早期アクセスするには、サポートにお問い合わせください。
+
+== 概要
+
+include::partials/understanding.regulus.adoc[]
+
+このドキュメントでは、Docker を使用して Regulus をインストールおよび構成する手順の概要を説明します。Workspaces CLI で Regulus を使用するには、 xref::ja/regulus/using-regulus-workspace-cli.adoc[]を参照してください。
+
+== 始める前に
+
+以下のものがあることを確認してください。
+
+* GitHub アカウント: GitHub アカウントをまだお持ちでない場合は、 link:https://github.com/[https://github.com/]でアカウントを作成します。
+* AWS アカウント: AWS アカウントをお持ちでない場合は、 link:https://aws.amazon.com/free/[https://aws.amazon.com/free/]で AWS 無料利用枠アカウントにサインアップしてください。
++
+NOTE: 開発者プレビューの場合、クエリー エンジンは AWS でのみホストできます。
+* Docker: Docker をダウンロードしてインストールするには、 link:https://docs.docker.com/docker-for-windows/install/[https://docs.docker.com/docker-for-windows/install/]を参照してください。
+
+== ワークスペースのインストール
+
+ワークスペースの Docker イメージは、単一のコンテナーで必要なサービスを実行するワークスペースのモノリシック イメージです。
+
+ link:https://hub.docker.com/r/teradata/regulus-workspaces[Docker Hub]から Docker イメージをプルします。
+
+[source, bash, id="docker_pull", role="content-editable emits-gtm-events"]
+----
+docker pull teradata/regulus-workspaces
+----
+
+続行する前に、必ず次のことを行ってください。
+
+* 環境変数 `AWS_ACCESS_KEY_ID`、 `AWS_SECRET_ACCESS_KEY`、および `AWS_SESSION_TOKEN`を AWS コンソールからコピーして保持します。 link:https://docs.aws.amazon.com/sdkref/latest/guide/environment-variables.html[「環境変数」]を参照してください。
+* 環境変数 `WORKSPACES_HOME`を、構成ファイルとデータ ファイルが配置されているディレクトリに設定します。ディレクトリが存在し、適切な権限が付与されていることを確認してください。
++
+[cols="1,1,1"]
+|===
+|ローカルロケーション |コンテナーの場所 |使用法
+
+|$WORKSPACES_HOME
+|/etc/td
+|データと設定を保存します
+
+|$WORKSPACES_HOME/tls
+|/etc/td/tls
+|証明書ファイルを保存します
+|===
+
+次のいずれかの方法を使用してワークスペースをインストールできます。
+
+* <<_install_workspaces_using_docker_engine,Docker Engine>>
+* <<_install_workspaces_using_docker_compose, Docker Compose>>
+
+=== Docker Engine を使用してワークスペースをインストールする
+
+ `WORKSPACES_HOME` 変数を設定したら、Docker イメージを実行します。
+
+NOTE: 要件に基づいてディレクトリを変更します。
+
+[source, bash, id="docker_engine_run", role="content-editable emits-gtm-events"]
+----
+docker run -detach \
+--env AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}" \
+--env AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}" \
+--env AWS_SESSION_TOKEN="${AWS_SESSION_TOKEN}" \
+--publish 3000:3000 \
+--publish 3282:3282 \
+--volume ${WORKSPACES_HOME}:/etc/td \
+teradata/regulus-workspaces:latest
+----
+
+このコマンドは、ワークスペース コンテナーをダウンロードして起動し、アクセスするために必要なポートを公開します。ワークスペース サーバーが初期化され、起動されると、次の URL: http://<ip_or_hostname>:3000/ を使用してワークスペースにアクセスできるようになります。
+
+=== Docker Compose を使用してワークスペースをインストールする
+
+Docker Compose を使用すると、Docker ベースのワークスペースのインストールを簡単に構成、インストール、アップグレードできます。
+
+1. Docker Compose をインストールします。 link:https://docs.docker.com/compose/install/[https://docs.docker.com/compose/install/]を参照してください。
+
+2.	docker-compose.yml ファイルを作成します。
++
+[source, bash, id="docker_compose", role="content-editable emits-gtm-events"]
+----
+version: "3.9"
+
+services:
+  workspaces:
+    deploy:
+      replicas: 1
+    container_name: workspaces
+    image: ${WORKSPACES_IMAGE_NAME:-teradata/regulus-workspaces}:${WORKSPACES_IMAGE_TAG:-latest}
+    command: serve -v
+    restart: unless-stopped
+    ports:
+      - "443:443/tcp"
+      - "3000:3000/tcp"
+      - "3282:3282/tcp"
+    environment:
+      TZ: ${WS_TZ:-UTC}
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+      AWS_SESSION_TOKEN: "${AWS_SESSION_TOKEN}"
+    volumes:
+      - ${WORKSPACES_HOME:-./volumes/workspaces}:/etc/td
+      - ${WORKSPACES_AWS_CONFIG:-~/.aws}:/root/.aws
+
+----
+
+3.	docker-compose.yml ファイルが配置されているディレクトリに移動し、ワークスペースを起動します。
++
+[source, bash, id="docker_compose_run", role="content-editable emits-gtm-events"]
+----
+Docker compose up -d
+----
++
+ワークスペース サーバーが初期化され、起動されると、次の URL: http://<ip_or_hostname>:3000/ を使用してワークスペースにアクセスできるようになります。
+
+== ワークスペースの構成とセットアップ
+
+Workspaces は、GitHub OAuth アプリを使用してユーザーを承認し、プロジェクトの状態を管理します。ワークスペースにプロジェクト インスタンス構成を保存する権限を与えるには、GitHub OAuth アプリの登録時に生成されたクライアント ID とクライアント シークレット キーを使用します。プロジェクト インスタンスの構成値は、GitHub リポジトリに維持されます。
+
+初めてのユーザーは、続行する前に次の手順を実行する必要があります。
+
+1.	GitHub アカウントにログオンし、OAuth アプリを作成します。 link:https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app[GitHub ドキュメント を]参照してください。
++
+OAuth アプリを登録するときに、URL フィールドに次のワークスペース URL を入力します。
++
+* **ホームページURL**: http://<ip_or_hostname> :3000/
+* **認可コールバック URL**: http://<ip_or_hostname>:3000/auth/github/callback
+
+2.	**クライアントID** と **クライアント秘密鍵**をコピーして保持します。
+
+ワークスペースを設定するには、次の手順を実行します。
+
+1. URL: http:// を使用してワークスペースにアクセスします。<ip_or_hostname> :3000/。
++
+image::regulus/{page-image-directory}/regulus.workspaces.setting.png[]
+
+2. **設定**の下に次の一般的なサービス構成を適用します。
++
+[cols="1,1,1"]
+|===
+|設定 |説明 |必須?
+
+|サービスベースURL
+|[編集不可] サービスのルート URL。
+|はい
+
+|Gitプロバイダ
+|Git 統合のプロバイダ。現在、Regulus は GitHub のみをサポートしています。
+|はい
+
+|サービスログレベル
+|ロギングのレベル。
+|はい
+
+|エンジン IP ネットワークの種類
+|クエリー エンジン インスタンスに割り当てられるネットワークのタイプ。パブリックまたはプライベートのいずれかになります。
+|はい
+
+|TLSを使用する
+|TLS サポートが有効かどうかを示します。Teradata では、このオプションを有効にすることをお勧めします。
+|はい
+
+|サービスTLS認証
+|サーバー ID を認証するためのサーバー証明書。
+|いいえ
+
+|サービスTLS証明書キー
+|サーバー証明書キー。
+|いいえ
+|===
+
+3. **サービスベースURL**に自己署名証明書を使用するには、 **GENERATE TLS**を選択します。証明書と秘密キーが生成され、それぞれのフィールドに表示されます。
+
+4. **次へ**を選択します。
+
+5. **クラウド統合: AWS**の下に次の設定を適用します。
++
+[cols="1,1,1"]
+|===
+|設定 |説明 |必須?
+
+|デフォルトのリージョン
+|ワークロードをデプロイする AWS リージョン。Teradata では、主な勤務場所に最も近いリージョンを選択することをお勧めします。
+|はい
+
+|デフォルトのサブネット
+|クエリー エンジンを起動するデフォルトの場所。
+|はい
+
+|デフォルトのCIDR
+|クエリー エンジンに使用されるクラスレス ドメイン間ルーティング (CIDR) アドレスのリスト。CIDR を使用して、ネットワーク内に IP アドレスを柔軟かつ効率的に割り当てます。CIDR を指定しない場合、クエリー エンジンはデフォルトの CIDR に自動的に関連付けられます。
+|いいえ
+
+|デフォルトのセキュリティグループ
+|各リージョンの VPC のセキュリティ グループのリスト。セキュリティ グループを指定しない場合、クエリー エンジンは VPC のデフォルトのセキュリティ グループに自動的に関連付けられます。
+|いいえ
+|===
+
+6. **次へ**を選択します。
+7. **GitHub を構成する**の下に次の設定を適用します。
++
+[cols="1,1,1"]
+|===
+|設定 |説明 |必須?
+
+|GitHub アプリケーションの URL
+|[編集不可] ワークスペースサーバーがホストされている URL。
+|はい
+
+|GitHub コールバック URL
+|[編集不可] 承認後にリダイレクトされる URL。
+|はい
+
+|GitHub クライアント ID
+|OAuth アプリの作成時に GitHub から受け取ったクライアント ID。
+|はい
+
+|TLSを使用する
+|TLS サポートを有効にする
+|はい
+
+|GitHub クライアント シークレット
+|OAuth アプリの作成時に GitHub から受け取ったクライアント シークレット ID。
+|はい
+
+|GitHub の組織
+|チームと共同作業するために使用する GitHub 組織アカウントの名前。
+|いいえ
+
+|GitHub ベース URL
+|GitHub アカウントのベース URL。URL はアカウントの種類によって異なる場合があります。たとえば、GitHub Enterprise アカウントの場合は https://github.company.com/ 。
+|いいえ
+|===
+
+8. **保存** を選択し、 **ログイン**を選択します。GitHub にリダイレクトされます。
+
+9. GitHub 認証情報を使用してログオンし、ワークスペースを承認します。
++
+認証後、ワークスペース **プロフィール** ページにリダイレクトされ、API キーが生成されます。API キーを使用して、Workspaces サービスにリクエストを行うことができます。
++
+NOTE: ワークスペースに接続するたびに、新しい API キーが生成されます。
+
+== Regulus インターフェースをインストールする
+
+Regulus インターフェイスとして JupyterLab または Workspaces CLI を使用できます。
+
+* JupyterLab: 次のいずれかの方法を使用してインストールします。
+
+** <<_install_jupyterLab_using_docker_engine, Docker Engine>>
+** <<_install_jupyterLab_using_docker_compose, Docker Compose>>
+
+* ワークスペース CLI: xref::ja/regulus/using-regulus-workspace-cli.adoc[]を参照してください。
+
+=== Docker Engine を使用して JupyterLab をインストールする
+
+1. link:https://hub.docker.com/r/teradata/regulus-jupyter[https://hub.docker.com/r/teradata/regulus-jupyter]にある DockerHub から Docker イメージをプルします。
+
+2. `JUPYTER_HOME` 変数を設定したら、Docker イメージを実行します。
++
+NOTE: 要件に基づいてディレクトリを変更します。
++
+
+[source, bash, id="docker_engine_jupyter", role="content-editable emits-gtm-events"]
+----
+docker run -detach \
+--env “accept_license=Y” \
+--publish 8888:8888 \
+--volume ${JUPYTER_HOME}: /home/jovyan/JupyterLabRoot \
+teradata/regulus-jupyter:latest
+----
+
+このコマンドは、JupyterLab コンテナーをダウンロードして起動し、それにアクセスするために必要なポートを公開します。
+URL: http://localhost:8888 を使用して JupyterLab に接続し、プロンプトが表示されたらトークンを入力します。詳細な手順については、 link:https://docs.teradata.com/r/Teradata-VantageTM-Modules-for-Jupyter-Installation-Guide/Teradata-Vantage-Modules-for-Jupyter/Teradata-Vantage-Modules-for-Jupyter[「Teradata Vantage™ Modules for Jupyter インストール ガイド」] または link:https://quickstarts.teradata.com/jupyter.html[「Jupyter Notebook から Vantage を使用する」]を参照してください。
+
+=== Docker Compose を使用して JupyterLab をインストールする
+
+Docker Compose を使用すると、Docker ベースの JupyterLab インストールを簡単に構成、インストール、アップグレードできます。
+
+
+1. Docker Compose をインストールします。 link:https://docs.docker.com/compose/install/[https://docs.docker.com/compose/install/]を参照してください。
+
+2.	docker-compose.yml ファイルを作成します。
++
+[source, bash, id="docker_compose_jupyter", role="content-editable emits-gtm-events"]
+----
+
+version: "3.9"
+
+services:
+  jupyter:
+    deploy:
+      replicas: 1
+    image: teradata/regulus-jupyter:latest
+    environment:
+      - "accept_license=Y"
+    ports:
+      - 8888:8888
+    volumes:
+      - ${JUPYTER_HOME:-./volumes/jupyter}:/home/jovyan/JupyterLabRoot/userdata
+      - ${WORKSPACES_AWS_CONFIG:-~/.aws}:/root/.aws
+
+----
+
+3.	docker-compose.yml ファイルが配置されているディレクトリに移動し、JupyterLab を起動します。
++
+[source, bash, id="docker_compose_jupyter_up", role="content-editable emits-gtm-events"]
+----
+Docker compose up -d
+----
++
+JupyterLab サーバーが初期化されて起動したら、URL: http://localhost:8888 を使用して JupyterLab に接続し、プロンプトが表示されたらトークンを入力できます。詳細な手順については、 link:https://docs.teradata.com/r/Teradata-VantageTM-Modules-for-Jupyter-Installation-Guide/Teradata-Vantage-Modules-for-Jupyter/Teradata-Vantage-Modules-for-Jupyter[「Teradata Vantage™ Modules for Jupyter インストール ガイド」] または link:https://quickstarts.teradata.com/jupyter.html[「Jupyter Notebook から Vantage を使用する」を]参照してください。
+
+おめでとうございます！Regulus を使用するための準備はすべて完了しました。
+
+== 次のステップ
+
+* 簡単なワークフローを実行して Regulus の使用を開始します。 xref::ja/regulus/getting-started-with-regulus.adoc[]を参照してください。
+
+* Regulus が実際のユースケースでどのように役立つかを知りたいですか? 近日公開！GitHub リンクについては、このスペースを引き続き監視してください。

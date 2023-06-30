@@ -1,0 +1,313 @@
+= Regulus JupyterLab マジック コマンド リファレンス
+:experimental:
+:page-author: Thripti Aravind
+:page-email: thripti.aravind@teradata.com
+:page-revdate: 2023 年 4 月 10 日
+:description: Regulus JupyterLab マジック コマンドについて学びます。
+:keywords: Regulus、ワークスペース、クエリーエンジン
+:page-image-directory: regulus-magic-reference
+
+IMPORTANT: この製品はプレビュー段階にあり、変更される可能性があります。Regulus に早期アクセスするには、サポートにお問い合わせください。
+
+== 概要
+
+Regulus JupyterLab は、既存の Teradata SQL Kernel マジック コマンドに加えて、次のマジック コマンドをサポートします。 link:https://github.com/Teradata/jupyterextensions/blob/master/notebooks/sql/GettingStarted.ipynb[「 Teradata JupyterLab スタート ガイド 」]を参照してください。
+
+== %workspaces_config
+
+**説明**: Workspaces サービスとバインドするための 1 回限りの構成。
+
+**使用法**:
+
+[source, bash, id="magic_workspaces_config", role="content-editable emits-gtm-events"]
+----
+%workspaces_config host=<RPC_Service_URL>, apikey=<Workspace_API_Key>, withtls=F
+----
+構文規則：
+
+* host:  クエリー エンジン サービスの名前または IP アドレス。
+
+* apikey: ワークスペース  プロファイル ページの API キー値。
+
+* [オプション] withTLS: False (F) の場合、デフォルトのクライアント/サーバー通信では TLS が使用されません。
+
+出力：
+
+----
+Workspace configured for host=<RPC_Service_URL>
+----
+
+== %project_create
+
+**説明**: 新しいプロジェクトを作成します。このコマンドは、GitHub アカウントにプロジェクト名を使用して新しいリポジトリも作成します。設定は、engine.yml ファイルに保存されます。
+
+**使用法**:
+
+[source, bash, id="magic_project_create", role="content-editable emits-gtm-events"]
+----
+%project_create project=<Project_Name>, env=<CSP>, team=<Project_Team>
+----
+構文規則：
+
+* project: 作成するプロジェクトの名前。
+
+* env: プロジェクトがホストされているクラウド環境。値には、aws、azure、gcp、または vsphere を指定できます。現在のリリースでは、AWS のみがサポートされています。
+
+* [オプション] チーム: プロジェクトで共同作業しているチームの名前。
+
+**出力**:
+----
+Project <Project_Name> created
+----
+
+== %project_delete
+
+**説明**：プロジェクトを削除します。
+
+WARNING: このコマンドを実行すると、Regulus を使用して作成されたオブジェクトを含む GitHub リポジトリが削除されます。
+
+**使用法**:
+[source, bash, id="magic_project_delete", role="content-editable emits-gtm-events"]
+----
+%project_delete project=<Project_Name>, team=<Project_Team>
+----
+構文規則：
+
+* project: 削除するプロジェクトの名前。
+
+* [オプション] チーム: プロジェクトで共同作業しているチームの名前。
+
+**出力**:
+----
+Project <Project_Name> deleted
+----
+
+
+== %project_list
+
+**説明**: プロジェクトの詳細を列挙します。
+
+特定のプロジェクトの詳細を取得するには、project パラメーターを使用します。パラメーターを指定せずにコマンドを実行すると、すべてのプロジェクトがリストされます。
+
+**使用法**:
+[source, bash, id="magic_project_list", role="content-editable emits-gtm-events"]
+----
+%project_list project=<Project_Name>
+----
+構文規則：
+
+* project: リストされるプロジェクトの名前。
+
+**出力**:
+
+image::regulus/{page-image-directory}/regulus.project.list.png[プロジェクトの一覧表示, width=500]
+
+
+== %project_auth_create
+
+**説明**: オブジェクト ストア資格情報を保存するための認可オブジェクトを作成します。
+
+クエリー エンジンをデプロイする前に、認可オブジェクトを作成する必要があります。承認の詳細は保持され、プロジェクトの再デプロイ時に組み込まれます。オプションで、クエリー エンジンのデプロイ後に `CREATE AUTHORIZATION` SQL コマンドを使用して手動で認可を作成できます。この場合、承認の詳細は保持されません。
+
+
+**使用法**:
+[source, bash, id="magic_auth_create", role="content-editable emits-gtm-events"]
+----
+%project_auth_create project=<Project_Name>, name=<Auth_Name>, key=<Auth_Key>, secret=<Auth_Secret>, region=<ObjectStore_Region>
+----
+構文規則：
+
+* project: プロジェクトの名前。
+
+* name:	オブジェクトストアの認可名。
+
+* key: オブジェクト ストアの認証キー。
+
+* Secret: オブジェクト ストアの認可シークレット アクセス ID。
+
+* region: オブジェクトストアのリージョン。 local はローカル オブジェクト ストアの場合です。
+
+**出力**:
+
+----
+Authorization 'name' created
+----
+
+== %project_auth_delete
+
+**説明**: オブジェクト ストアの承認を削除します。
+
+**使用法**:
+[source, bash, id="magic_auth_delete", role="content-editable emits-gtm-events"]
+----
+%project_auth_delete project=<Project_Name>, name=<Auth_Name>
+----
+構文規則：
+
+* project: プロジェクトの名前。
+* name:	オブジェクトストアの認可名。
+
+**出力**:
+----
+Authorization 'name' deleted
+----
+
+== %project_auth_list
+
+**説明**: プロジェクトに対して作成されたオブジェクト ストア権限をリストします。
+
+**使用法**:
+[source, bash, id="magic_auth_list", role="content-editable emits-gtm-events"]
+----
+%project_auth_list project=<Project_Name>
+----
+構文規則：
+
+* project: プロジェクトの名前。
+
+**出力**:
+
+image::regulus/{page-image-directory}/regulus.auth.list.png[リスト認証, width=500]
+
+== %project_engine_deploy
+
+**説明**: プロジェクトのクエリー エンジンをデプロイします。展開プロセスが完了するまでに数分かかります。導入が成功すると、パスワードが生成されます。
+
+**使用法**:
+[source, bash, id="magic_engine_deploy", role="content-editable emits-gtm-events"]
+----
+%project_engine_deploy project=<Project_Name>, size=<Size_of_Engine>, node=<Number_of_Nodes>, subnet=<Subnet_id>, region=<Region>, secgroups=<Security_Group>, cidrs=<CIDR>
+----
+構文規則：
+
+* project:	プロジェクトの名前。
+* size: クエリーエンジンのサイズ。値は次のとおりです。
+** small
+** medium
+** large
+** extralarge
+* [オプション] ノード: デプロイされるクエリー エンジン ノードの数。デフォルト値は 1 です。
+* [オプション] サブネット: サービスからのデフォルト値がない場合にクエリー エンジンに使用されるサブネット。
+* [オプション] リージョン: サービスからのデフォルト値がない場合にクエリー エンジンに使用されるリージョン。
+* [オプション] secgroups: 各リージョンの VPC のセキュリティ グループのリスト。セキュリティ グループを指定しない場合、クエリー エンジンは VPC のデフォルトのセキュリティ グループに自動的に関連付けられます。
+* [オプション] cidr: クエリー エンジンに使用される CIDR アドレスのリスト。
+
+
+**出力**:
+----
+Started deploying.
+Success: Compute Engine setup, look at the connection manager
+----
+
+image::regulus/{page-image-directory}/regulus.engine.deploy.png[エンジンのデプロイ, width=500]
+
+== %project_engine_suspend
+
+**説明**: 作業が完了したら、クエリー エンジンを停止します。
+
+**使用法**:
+[source, bash, id="magic_engine_suspend", role="content-editable emits-gtm-events"]
+----
+%project_engine_suspend <Project_Name>
+----
+構文規則：
+
+* project: プロジェクトの名前。
+
+**出力**:
+
+----
+Started suspend. Success: connection removed
+Success: Suspending Compute Engine
+----
+
+== %project_engine_list
+
+**説明**: プロジェクトにデプロイされているクエリー エンジンのリストを表示します。
+
+**使用法**:
+[source, bash, id="magic_engine_list", role="content-editable emits-gtm-events"]
+----
+%project_engine_list project=<Project_Name>
+----
+構文規則：
+
+* project: プロジェクトの名前。
+
+**出力**:
+
+image::regulus/{page-image-directory}/regulus.engine.list.png[エンジン一覧, width=500]
+
+== %project_user_list
+
+**説明**: プロジェクトに割り当てられた共同作業者のリストを表示します。
+
+**使用法**:
+[source, bash, id="magic_project_user_list", role="content-editable emits-gtm-events"]
+----
+%project_user_list project=<Project_Name>
+----
+
+構文規則：
+
+* [オプション] project: プロジェクトの名前。
+
+**出力**:
+
+image::regulus/{page-image-directory}/regulus.user.list.png[ユーザーリスト, width=500]
+
+== %project_backup
+
+**説明**: クエリー エンジン内のプロジェクトのメタデータとオブジェクト定義をバックアップします。
+
+**使用法**:
+[source, bash, id="magic_project_backup", role="content-editable emits-gtm-events"]
+----
+%project_backup project=<Project_Name>
+----
+構文規則：
+
+* project:	プロジェクトの名前。
+
+**出力**:
+----
+Backup of the object definitions created
+----
+
+== %project_restore
+
+**説明**: GitHub リポジトリからプロジェクトのメタデータとオブジェクト定義を復元します。
+
+**使用法**:
+[source, bash, id="magic_project_restore", role="content-editable emits-gtm-events"]
+----
+%project_restore project=<Project_Name>, gitref=<Git_Reference>
+----
+構文規則：
+
+* project:	プロジェクトの名前。
+* [オプション] gitref: Git リファレンス。
+
+**出力**:
+----
+Restore of the object definitions done
+----
+
+== %help
+
+**説明**: Regulus-Teradata SQL CE Kernel で提供されるマジックのリストを表示します。
+
+**使用法**:
+[source, bash, id="magic_help", role="content-editable emits-gtm-events"]
+----
+%help
+----
+さらに、コマンドごとに詳細なヘルプ メッセージを表示できます。
+
+**使用法**:
+[source, bash, id="magic_command_help", role="content-editable emits-gtm-events"]
+----
+%help <command>
+----
+
+
