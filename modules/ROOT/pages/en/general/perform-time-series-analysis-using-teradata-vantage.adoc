@@ -14,7 +14,7 @@ Time series is series of data points indexed in time order. It is data continuou
 
 You need access to a Teradata Vantage instance. Times series functionalities and NOS are enabled in all Vantage editions from Vantage Express through Developer, DYI to Vantage as a Service starting from version 17.10.
 
-include::partials/vantage_clearscape_analytics.adoc[]
+include::../partials/vantage_clearscape_analytics.adoc[]
 
 == Import data sets from AWS S3 using Vantage NOS
 
@@ -244,5 +244,5 @@ In this quick start we have learnt how easy it is to analyse time series dataset
 
 == Further reading
 * link:https://docs.teradata.com/r/Teradata-VantageTM-Time-Series-Tables-and-Operations/July-2021/Introduction-to-Teradata-Time-Series-Tables-and-Operations[Teradata Vantage™ - Time Series Tables and Operations]
-* xref::en/nos.adoc[]
+* xref::en/general/nos.adoc[]
 * link:https://docs.teradata.com/r/2mw8ooFr~xX0EaaGFaDW8A/root[Teradata Vantage™ - Native Object Store Getting Started Guide]

@@ -454,15 +454,21 @@ body {
 
 <script>
   function miFuncion(lan) {
+    // alert("lenguage: "+lan);
     var path = document.location.href;
+    // alert("path: "+path);
     var page = path.split("/");
-    //page[page.length-2] = lan;  
-    if( page[page.length-2] == "en" || page[page.length-2] == "es" || page[page.length-2] == "ja" ) {
-      page[page.length-2] = lan;  
+    // alert("Pagina: "+page);
+    // page[page.length-2] = lan;  
+    // alert("pagina1-> "+page[page.length-3]);
+    if( page[page.length-3] === "en" || page[page.length-3] === "es" || page[page.length-3] === "ja" ) {
+      page[page.length-3] = lan;  
+      // alert("pagina2-> "+page[page.length-3]);
     }else{
-      arr.splice(page.length-2, 0, lan);  
+      arr.splice(page.length-3, 0, lan);  
     }
     var salida = page.join('/');
+    // alert("Salida: "+salida);
     window.location.href=salida; 
   }
   /* When the user clicks on the button, 

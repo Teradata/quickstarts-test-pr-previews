@@ -16,7 +16,7 @@
 ====
 Vantage Express は仮想マシン イメージとして配布されます。このハウツーでは EC2 `c5n.metal` インスタンス タイプを使用します。これは、1 時間あたり 3 ドル以上かかるベアメタル インスタンスです。
 
-より安価なオプションが必要な場合は、ネストされた仮想化をサポートし、安価な VM 上で Vantage Express を実行できる xref::ja/vantage.express.gcp.adoc[Google Cloud] と xref:ja/run-vantage-express-on-microsoft-azure.adoc[Azure] をお試しください。
+より安価なオプションが必要な場合は、ネストされた仮想化をサポートし、安価な VM 上で Vantage Express を実行できる xref::ja/general/vantage.express.gcp.adoc[Google Cloud] と xref::ja/general/run-vantage-express-on-microsoft-azure.adoc[Azure] をお試しください。
 
  
 ====
@@ -210,7 +210,7 @@ sudo -i
 mkdir /opt/downloads
 cd /opt/downloads
 ----
-include::partials/install.ve.in.public.cloud.adoc[]
+include::../partials/install.ve.in.public.cloud.adoc[]
 * インターネットから Vantage Express に接続したい場合は、VM へのファイアウォール ホールを開く必要があります。また、デフォルトのパスワードを  `dbc`ユーザーに変更する必要があります:
 .  `dbc` ユーザーのパスワードを変更するには、VM に移動して bteq を開始します:
 +
@@ -276,7 +276,7 @@ aws ec2 delete-vpc \
   --vpc-id $AWS_VPC_ID
 ----
 
-include::partials/next.steps.adoc[]
+include::../partials/next.steps.adoc[]
 
 == 参考文献
 * link:https://docs.teradata.com/r/Teradata-StudioTM-and-StudioTM-Express-Installation-Guide-17.20[Teradata® Studio™ および Studio™ Express インストール ガイド]

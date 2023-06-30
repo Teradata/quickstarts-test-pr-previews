@@ -11,7 +11,7 @@
 
 このハウツーでは、Microsoft Azure で Vantage Express を実行する方法を説明します。Vantage Express には、完全に機能する Teradata SQL エンジンが含まれています。
 
-NOTE: クラウドの使用料を払いたくない場合は、 link::ja/getting.started.vmware.adoc[VMware]、 link::ja/getting.started.vbox[VirtualBox]、または xref::ja/getting.started.utm.adoc[UTM]を使用して Vantage Express をローカルにインストールできます。
+NOTE: クラウドの使用料を払いたくない場合は、 link::ja/general/getting.started.vmware.adoc[VMware]、 link::ja/general/getting.started.vbox[VirtualBox]、または xref::ja/general/getting.started.utm.adoc[UTM]を使用して Vantage Express をローカルにインストールできます。
 
 == 前提条件
 
@@ -137,7 +137,7 @@ partprobe /dev/sdc1
 export DISK_UUID=$(blkid | grep sdc1 | cut -d"\"" -f2)
 echo "UUID=$DISK_UUID  /opt/downloads   xfs   defaults,nofail   1   2" >> /etc/fstab
 ----
-include::partials/install.ve.in.public.cloud.adoc[]
+include::../partials/install.ve.in.public.cloud.adoc[]
 * インターネットから Vantage Express に接続したい場合は、VM へのファイアウォール ホールを開く必要があります。また、デフォルトのパスワードを  `dbc`ユーザーに変更する必要があります:
 .  `dbc` ユーザーのパスワードを変更するには、VM に移動して bteq を開始します:
 +
@@ -172,7 +172,7 @@ az vm open-port --name teradata-vantage-express --port 1025
 az group delete --no-wait -n tdve-resource-group
 ----
 
-include::partials/next.steps.adoc[]
+include::../partials/next.steps.adoc[]
 
 == 参考文献
 * link:https://docs.teradata.com/r/Teradata-StudioTM-and-StudioTM-Express-Installation-Guide-17.20[Teradata® Studio™ および Studio™ Express インストール ガイド]

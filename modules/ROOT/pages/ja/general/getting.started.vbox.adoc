@@ -6,7 +6,7 @@
 :keywords: データ ウェアハウス、コンピューティング ストレージの分離、teradata、vantage、クラウド データ プラットフォーム、オブジェクト ストレージ、ビジネス インテリジェンス、エンタープライズ分析
 :tabs:
 
-include::partials/getting.started.intro.adoc[]
+include::../partials/getting.started.intro.adoc[]
 
 == 前提条件
 
@@ -68,7 +68,7 @@ mount /dev/cdrom /media/dvd; /media/dvd/VBoxLinuxAdditions.run
 
  
 
-include::partials/next.steps.adoc[]
+include::../partials/next.steps.adoc[]
 
 == 参考文献
 * link:https://docs.teradata.com/r/Teradata-StudioTM-and-StudioTM-Express-Installation-Guide-17.20[Teradata® Studio™ および Studio™ Express インストール ガイド]

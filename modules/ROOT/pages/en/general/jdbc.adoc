@@ -14,7 +14,7 @@ This how-to demonstrates how to connect to Teradata Vantage using JDBC using a s
 
 * Access to a Teradata Vantage instance.
 +
-include::partials/vantage_clearscape_analytics.adoc[]
+include::../partials/vantage_clearscape_analytics.adoc[]
 * JDK
 * Maven
 
