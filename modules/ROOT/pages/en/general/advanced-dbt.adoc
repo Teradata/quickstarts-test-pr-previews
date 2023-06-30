@@ -24,7 +24,7 @@ The application of these concepts is illustrated through the ELT process of `ted
 
 * Access to a Teradata Vantage instance.
 +
-include::partials/vantage_clearscape_analytics.adoc[]
+include::../partials/vantage_clearscape_analytics.adoc[]
 * Python 3.7, 3.8, 3.9 or 3.10 installed.
 
 * A database client for running database commands, an example of the configuration of one such client is presented in link:https://quickstarts.teradata.com/other-integrations/configure-a-teradata-vantage-connection-in-dbeaver.html[this tutorial.,  window="_blank"].

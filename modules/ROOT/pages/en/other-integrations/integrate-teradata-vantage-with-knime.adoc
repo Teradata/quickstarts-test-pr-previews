@@ -66,4 +66,4 @@ image::other-integrations/{page-image-directory}/view-results-final.png[View res
 This how-to demonstrats how to connect from KNIME Analytics Platform to Teradata Vantage.
 
 == Further reading
-* xref::en/ml.adoc[Train ML models in Vantage using only SQL]
+* xref::en/general/ml.adoc[Train ML models in Vantage using only SQL]

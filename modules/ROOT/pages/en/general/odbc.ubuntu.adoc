@@ -15,7 +15,7 @@ This how-to demonstrates how to use the ODBC driver with Teradata Vantage on Ubu
 
 * Access to a Teradata Vantage instance.
 +
-include::partials/vantage_clearscape_analytics.adoc[]
+include::../partials/vantage_clearscape_analytics.adoc[]
 * Root access to a Ubuntu machine.
 
 == Installation

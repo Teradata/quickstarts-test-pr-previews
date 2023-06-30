@@ -16,9 +16,9 @@ This how-to demonstrates how to run Vantage Express on AWS. Vantage Express is a
 ====
 Vantage Express is distributed as a virtual machine image. This how-to uses the EC2 `c5n.metal` instance type. It's a bare metal instance that costs over $3/h.
 
-If you want a cheaper option, try xref::en/vantage.express.gcp.adoc[Google Cloud] and xref::en/run-vantage-express-on-microsoft-azure.adoc[Azure] which support nested virtualization and can run Vantage Express on cheap VM's.
+If you want a cheaper option, try xref::en/general/vantage.express.gcp.adoc[Google Cloud] and xref::en/general/run-vantage-express-on-microsoft-azure.adoc[Azure] which support nested virtualization and can run Vantage Express on cheap VM's.
 
-If you do not wish to pay for cloud usage at all, install Vantage Express locally using xref::en/getting.started.vmware.adoc[VMware], xref::en/getting.started.vbox.adoc[VirtualBox], or xref::en/getting.started.utm.adoc[UTM].
+If you do not wish to pay for cloud usage at all, install Vantage Express locally using xref::en/general/getting.started.vmware.adoc[VMware], xref::en/general/getting.started.vbox.adoc[VirtualBox], or xref::en/general/getting.started.utm.adoc[UTM].
 ====
 
 == Prerequisites
@@ -210,7 +210,7 @@ sudo -i
 mkdir /opt/downloads
 cd /opt/downloads
 ----
-include::partials/install.ve.in.public.cloud.adoc[]
+include::../partials/install.ve.in.public.cloud.adoc[]
 * If you would like to connect to Vantage Express from the Internet, you will need to open up firewall holes to your VM. You should also change the default password to `dbc` user:
 . To change the password for `dbc` user go to your VM and start bteq:
 +
@@ -276,7 +276,7 @@ aws ec2 delete-vpc \
   --vpc-id $AWS_VPC_ID
 ----
 
-include::partials/next.steps.adoc[]
+include::../partials/next.steps.adoc[]
 
 == Further reading
 * link:https://docs.teradata.com/r/Teradata-StudioTM-and-StudioTM-Express-Installation-Guide-17.20[Teradata® Studio™ and Studio™ Express Installation Guide]

@@ -85,7 +85,7 @@ sudo -i
 mkdir /opt/downloads
 cd /opt/downloads
 ----
-include::partials/install.ve.in.public.cloud.adoc[]
+include::../partials/install.ve.in.public.cloud.adoc[]
 * インターネットから Vantage Express に接続したい場合は、VM へのファイアウォール ホールを開く必要があります。また、デフォルトのパスワードを `dbc` ユーザーに変更する必要があります:
 .  `dbc` ユーザーのパスワードを変更するには、VM に移動して bteq を開始します:
 +
@@ -126,7 +126,7 @@ gcloud compute instances delete teradata-vantage-express --zone=us-central1-a
 gcloud compute firewall-rules delete vantage-express
 ----
 
-include::partials/next.steps.adoc[]
+include::../partials/next.steps.adoc[]
 
 == 参考文献
 * link:https://docs.teradata.com/r/Teradata-StudioTM-and-StudioTM-Express-Installation-Guide-17.20[Teradata® Studio™ および Studio™ Express インストール ガイド]

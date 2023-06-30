@@ -29,7 +29,7 @@ import sys
 
 *Setup a Vantage instance*
 
-Follow the xref::en/vantage.express.gcp.adoc[Run Vantage Express on Google] Cloud how-to to get Vantage setup. Make sure to follow the instructions to open the VM up to the Internet.
+Follow the xref::en/general/vantage.express.gcp.adoc[Run Vantage Express on Google] Cloud how-to to get Vantage setup. Make sure to follow the instructions to open the VM up to the Internet.
 
 *Create GCS bucket*
 

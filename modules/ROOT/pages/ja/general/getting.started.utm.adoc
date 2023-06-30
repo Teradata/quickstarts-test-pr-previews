@@ -6,17 +6,17 @@
 :keywords: データ ウェアハウス、コンピューティング ストレージの分離、teradata、vantage、クラウド データ プラットフォーム、オブジェクト ストレージ、ビジネス インテリジェンス、エンタープライズ分析
 :icons: フォント
 
-include::partials/getting.started.intro.adoc[]
+include::../partials/getting.started.intro.adoc[]
 
 == 前提条件
 
 . Macコンピュータ。Intel と M1/2 チップの両方がサポートされています。
 +
-NOTE: Vantage Express は x86 アーキテクチャで動作します。M1/2 チップ上で VM を実行する場合、UTM は x86 をエミュレートする必要があります。これは仮想化よりも大幅に遅くなります。M1/M2 上の Vantage Express がニーズに対して遅すぎると判断した場合は、クラウド ( xref::ja/run-vantage-express-on-aws.adoc[AWS]、 xref::ja/run-vantage-express-on-microsoft-azure.adoc[Azure]、 xref::ja/vantage.express.gcp.adoc[Google Cloud )]で Vantage Express を実行することを検討してください。
+NOTE: Vantage Express は x86 アーキテクチャで動作します。M1/2 チップ上で VM を実行する場合、UTM は x86 をエミュレートする必要があります。これは仮想化よりも大幅に遅くなります。M1/M2 上の Vantage Express がニーズに対して遅すぎると判断した場合は、クラウド ( xref::ja/general/run-vantage-express-on-aws.adoc[AWS]、 xref::ja/general/run-vantage-express-on-microsoft-azure.adoc[Azure]、 xref::ja/general/vantage.express.gcp.adoc[Google Cloud )]で Vantage Express を実行することを検討してください。
 . 少なくとも 1 つのコアと 4GB RAM を仮想マシン専用にできる 30GB のディスク領域と十分な CPU および RAM。
 . ソフトウェアをインストールして実行できる管理者権限。
 +
-NOTE: ローカルマシンに管理者権限がありませんか? xref::ja/run-vantage-express-on-aws.adoc[AWS]、 xref::ja/run-vantage-express-on-microsoft-azure.adoc[Azure]、 xref::ja/vantage.express.gcp.adoc[Google Cloud]で Vantage Express を実行する方法をご覧ください。
+NOTE: ローカルマシンに管理者権限がありませんか? xref::ja/general/run-vantage-express-on-aws.adoc[AWS]、 xref::ja/general/run-vantage-express-on-microsoft-azure.adoc[Azure]、 xref::ja/general/vantage.express.gcp.adoc[Google Cloud]で Vantage Express を実行する方法をご覧ください。
 
 == インストール
 
@@ -65,7 +65,7 @@ image::utm.final.png[UTM ドライブ ファイナル, width=500]
 
  
 
-include::partials/next.steps.adoc[]
+include::../partials/next.steps.adoc[]
 
 == 参考文献
 * link:https://docs.teradata.com/r/Teradata-StudioTM-and-StudioTM-Express-Installation-Guide-17.20[Teradata® Studio™ および Studio™ Express インストール ガイド]

@@ -85,7 +85,7 @@ sudo -i
 mkdir /opt/downloads
 cd /opt/downloads
 ----
-include::partials/install.ve.in.public.cloud.adoc[]
+include::../partials/install.ve.in.public.cloud.adoc[]
 * If you would like to connect to Vantage Express from the Internet, you will need to open up firewall holes to your VM. You should also change the default password to `dbc` user:
 . To change the password for `dbc` user go to your VM and start bteq:
 +
@@ -126,7 +126,7 @@ Also, remember to remove any firewall rules that you have added, e.g.:
 gcloud compute firewall-rules delete vantage-express
 ----
 
-include::partials/next.steps.adoc[]
+include::../partials/next.steps.adoc[]
 
 == Further reading
 * link:https://docs.teradata.com/r/Teradata-StudioTM-and-StudioTM-Express-Installation-Guide-17.20[Teradata® Studio™ and Studio™ Express Installation Guide]
