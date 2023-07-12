@@ -1,0 +1,92 @@
+<script src="{{uiRootPath}}/js/site.js"></script>
+<script async src="{{uiRootPath}}/js/behavior.js"></script>
+{{#if env.SITE_SEARCH_PROVIDER}}
+{{> search-scripts}}
+{{/if}}
+<script src="{{uiRootPath}}/js/teradata.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/powershell.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/dockerfile.min.js"></script>
+<script>
+  hljs.registerLanguage('teradata-sql', window.hljsDefineTeradataSql);
+  hljs.highlightAll();
+</script>
+<script>
+  // this script instruments elements to emit GTM events
+  for (let e of document.getElementsByClassName("emits-gtm-events")) {
+    e.addEventListener("click", function() {
+      dataLayer.push({
+        'event': e.id
+      });
+    });
+    hljsElem = e.getElementsByClassName("hljs")[0];
+    hljsElem.addEventListener("copy", function() {
+      console.log('copy event');
+      dataLayer.push({
+        'event': 'copy_code',
+        'element': e.id
+      });
+    });
+  }
+
+  function toggleFeedbackWidgets(elem) {
+    // is feedback positive or negative
+    feedback = elem.classList.contains('fa-thumbs-up');
+
+    // has this feedback been previously recorded?
+    currentState = elem.classList.contains('fas');
+
+    // if already clicked then exit
+    if (currentState) return;
+
+    // inactive must be activated
+    document.querySelectorAll(`i.far.${(feedback)?'fa-thumbs-up':'fa-thumbs-down'}[name="feedback-icon"]`).forEach(
+      (e) => {
+        e.classList.add('fas');
+        e.classList.remove('far');
+      }
+    );
+
+    // active must be disabled
+    document.querySelectorAll(`i.fas.${(!feedback)?'fa-thumbs-up':'fa-thumbs-down'}[name="feedback-icon"]`).forEach(
+      (e) => {
+        e.classList.add('far');
+        e.classList.remove('fas');
+      }
+    );
+
+    dataLayer.push({ 'event': (feedback)? 'feedback_positive': 'feedback_negative' });
+  }
+
+  function toggleThumbs(elem, eventName) {
+    // is feedback positive or negative
+    feedback = elem.classList.contains('fa-thumbs-up');
+
+    // has this feedback been previously recorded?
+    currentState = elem.classList.contains('fas');
+
+    // if already clicked then exit
+    if (currentState) return;
+
+    // inactive must be activated
+    elem.parentElement.querySelectorAll(`i.far.${(feedback)?'fa-thumbs-up':'fa-thumbs-down'}`).forEach(
+      (e) => {
+        e.classList.add('fas');
+        e.classList.remove('far');
+      }
+    );
+
+    // active must be disabled
+    elem.parentElement.querySelectorAll(`i.fas.${(!feedback)?'fa-thumbs-up':'fa-thumbs-down'}`).forEach(
+      (e) => {
+        e.classList.add('far');
+        e.classList.remove('fas');
+      }
+    );
+
+    dataLayer.push({ 'event': (feedback)? `${eventName}_successful`: `${eventName}_unsuccessful` });
+  }
+
+  // expand the nav menu
+  document.querySelectorAll('.nav-item').forEach(function (item) { item.classList.add('is-active') })
+</script>
