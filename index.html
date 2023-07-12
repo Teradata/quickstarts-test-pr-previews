@@ -958,6 +958,7 @@ span.search-result-highlight {
   </head>
   <body>
 <style>
+@media screen and (min-width: 1025px){
 body {
   margin: 0;
   padding: 0;
@@ -1092,7 +1093,7 @@ body {
     text-decoration-color: #333a3e;
     transition: .25s;
 }
-@media screen and (min-width: 1025px){
+
 
   .container-wide, .media-selector-with-text__main-row-container {
   padding: 0 13.625rem;
@@ -1112,7 +1113,7 @@ body {
     display: flex!important;
   }
 
-}
+
 
 
   button {
@@ -1268,7 +1269,13 @@ body {
 .dpd:hover .dropdown-content {display: block;}
 
 .dpd:hover .dpdbtn {background-color: #3e8e41;}
- 
+} 
+
+@media (max-width: 1023.5px) {
+  .nav-container {
+    visibility: hidden;
+  }
+}
 </style>
 <!-- Google Tag Manager (noscript) -->
 <noscript>
@@ -1294,6 +1301,11 @@ body {
           <li lang="ja-JP" class="td-language-selector__menu-item" onclick="miFuncion('ja')">
             <a href="#" class="td-language-selector__location no-underline">日本</a>
           </li>
+          <!-- 
+          <li lang="es-MX" class="td-language-selector__menu-item" onclick="miFuncion('es')">
+            <a href="#" class="td-language-selector__location no-underline">Español</a>
+          </li>
+          -->
         </div>
       </div>
     </div>
