@@ -13,14 +13,19 @@
 
 <script>
   var path = document.location.href;
-  var language = path.match(/\/(en|es|ja)\//)[1];
-  // alert(language);
+  var matchResult = path.match(/\/(es|ja)\//);
+  var language;
+  if (matchResult) {
+    language = matchResult[1];
+  } else {
+    language = 'en';
+  }
+  console.log("lan: ",language);
 
   document.getElementById(language).style.visibility = 'visible';
   document.getElementById(language).style.display = 'block';
   var parts = path.split('/');
   var pagina = parts[parts.length-2];
-  // alert(pagina);
   var elementosMenu = document.querySelectorAll('.nav-item a');
   elementosMenu.forEach(function(elemento) {
     if (elemento.href === path) {

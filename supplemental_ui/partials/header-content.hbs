@@ -484,21 +484,28 @@ body {
 
 <script>
   function miFuncion(lan) {
-    // alert("lenguage: "+lan);
-    var path = document.location.href;
-    // alert("path: "+path);
-    var page = path.split("/");
-    // alert("Pagina: "+page);
-    // page[page.length-2] = lan;  
-    // alert("pagina1-> "+page[page.length-3]);
-    if( page[page.length-3] === "en" || page[page.length-3] === "es" || page[page.length-3] === "ja" ) {
-      page[page.length-3] = lan;  
-      // alert("pagina2-> "+page[page.length-3]);
+    let path, page, indexFile, file, newUrl, salida;
+    path = document.location.href;
+    page = path.split("/");
+
+    if(lan === "en"){
+      indexFile = page.lastIndexOf(page[page.length-3]);
+      file = page[page.length-1]
+      page.splice(indexFile, indexFile+1, file)
     }else{
-      arr.splice(page.length-3, 0, lan);  
+      if(page[page.length-3] === "es" || page[page.length-3] === "ja" ) {
+        page[page.length-3] = lan;  
+      }else{
+        if(page[page.length-3] !== "en"){
+          file = page[page.length-1]
+          indexFile = page.lastIndexOf(file);
+          newUrl = lan + "/general/" + page[page.length-1]; 
+          page.splice(indexFile, 1, newUrl)
+        }
+      }
     }
-    var salida = page.join('/');
-    // alert("Salida: "+salida);
+
+    salida = page.join('/');
     window.location.href=salida; 
   }
   /* When the user clicks on the button, 
