@@ -487,30 +487,34 @@ body {
     let path, page, indexFile, file, newUrl, salida;
     path = document.location.href;
     page = path.split("/");
-    alert("path: "+path);
-    alert("page: "+page);
-    alert("lan: " +lan);
+
     if(lan === "en"){
       indexFile = page.lastIndexOf(page[page.length-3]);
-      file = page[page.length-1]
-      page.splice(indexFile, indexFile+1, file)
+      if (page[page.length-2] === "general"){
+        file = page[page.length-1]
+      }else{
+        file = page[page.length-2] +"/"+ page[page.length-1];
+      }
+      page.splice(indexFile, indexFile+1, file);
     }else{
-      if(page[page.length-3] === "es" || page[page.length-3] === "ja" ) {
+      if(page[page.length-3] === "es" || page[page.length-3] === "ja" ){
         page[page.length-3] = lan;  
       }else{
         if(page[page.length-3] !== "en"){
-          alert("LLegue al if!!!")
-          alert(page[page.length-2]);
-          file = page[page.length-1]
-          indexFile = page.lastIndexOf(file);
-          newUrl = lan + "/general/" + page[page.length-1]; 
-          page.splice(indexFile, 1, newUrl)
-        }else{
-          alert("LLegue al else!!!")
+          if(page[page.length-2] !== "general" || page[page.length-2] !== "en"){
+            file = page[page.length-1]
+            indexFile = page.lastIndexOf(file);
+            newUrl = lan + "/general/" + page[page.length-1]; 
+            page.splice(indexFile, 1, newUrl)
+          }else{
+             file = page[page.length-2]
+            indexFile = page.lastIndexOf(file);
+            newUrl = lan + "/"+page[page.length-2]+"/" + page[page.length-1]; 
+            page.splice(indexFile, 2, newUrl)
+          }
         }
       }
     }
-
     salida = page.join('/');
     window.location.href=salida; 
   }
