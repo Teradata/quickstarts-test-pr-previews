@@ -1448,6 +1448,9 @@ body {
     alert(page[page.length-2]);
     alert(page[page.length-3]);
     if (lan !== page[page.length-3]){
+      if(page[page.length-1]===""){
+        console.log("empty");
+      }else{
       if(lan === "en"){
         indexFile = page.lastIndexOf(page[page.length-3]);
         if (page[page.length-2] === "general"){
@@ -1480,6 +1483,7 @@ body {
       }
       salida = page.join('/');
       window.location.href=salida; 
+      }
     }
   }
   /* When the user clicks on the button, 
