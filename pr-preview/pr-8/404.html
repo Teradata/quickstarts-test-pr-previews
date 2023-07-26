@@ -1446,14 +1446,20 @@ body {
 //    alert(page[page.length-3]);
 //    if (lan !== page[page.length-3]){
       if(page[page.length-1]==="" || page[page.length-1]==="index.html" || page[page.length-1]==="#" || page[page.length-1]==="index.html#"){
-//        alert("empty");
-        alert("path: "+page);
-        alert("lan: "+page[page.length-1]);
-        indexFile = page.lastIndexOf(page[page.length-1]);
-        page.splice(indexFile, 1, lan)
-      //  newUrl = page[page.length-2]+"/" + lan ; 
-        alert(page);
+        alert("page[page.length-1]: "+page[page.length-1]);
+        alert("page[page.length-2]: "+page[page.length-2]);
+        if(page[page.length-2] !== "ja"){
+          indexFile = page.lastIndexOf(page[page.length-1]);
+          page.splice(indexFile, 1, lan);
+        }else{
+          indexFile = page.lastIndexOf(page[page.length-2]);
+          page.splice(indexFile, 1, '');
+        }
+
+         
       }else{
+        alert(path);
+        aler(page);
         if(lan === "en"){
           indexFile = page.lastIndexOf(page[page.length-3]);
           if (page[page.length-2] === "general"){
@@ -1486,7 +1492,6 @@ body {
         }
       }
       salida = page.join('/');
-      alert("Salida: "+salida);
       window.location.href=salida; 
 //    }
   }
