@@ -1437,40 +1437,50 @@ body {
 </header>
 
 <script>
-  function miFuncion(lan) {
+  function miFuncion(lan, flag) {
     let path, page, indexFile, file, newUrl, salida;
     path = document.location.href;
     page = path.split("/");
-
-    if(lan === "en"){
-      indexFile = page.lastIndexOf(page[page.length-3]);
-      if (page[page.length-2] === "general"){
-        file = page[page.length-1]
+//    alert(path);
+    let regulus = "regulus";
+    let devops = "devops";
+    alert(page[page.length-1]);
+    alert(page[page.length-2]);
+    alert(page[page.length-3]);
+    if (lan !== page[page.length-3]){
+      if(lan === "en"){
+        indexFile = page.lastIndexOf(page[page.length-3]);
+        if (page[page.length-2] === "general"){
+          file = page[page.length-1]
+        }else{
+          file = page[page.length-2] +"/"+ page[page.length-1];
+        }
+        page.splice(indexFile, indexFile+1, file);
       }else{
-        file = page[page.length-2] +"/"+ page[page.length-1];
-      }
-      page.splice(indexFile, indexFile+1, file);
-    }else{
-      if(page[page.length-3] === "es" || page[page.length-3] === "ja" ){
-        page[page.length-3] = lan;  
-      }else{
-        if(page[page.length-3] !== "en"){
-          if(page[page.length-2] !== "general" || page[page.length-2] !== "en"){
-            file = page[page.length-1]
-            indexFile = page.lastIndexOf(file);
-            newUrl = lan + "/general/" + page[page.length-1]; 
-            page.splice(indexFile, 1, newUrl)
-          }else{
-             file = page[page.length-2]
-            indexFile = page.lastIndexOf(file);
-            newUrl = lan + "/"+page[page.length-2]+"/" + page[page.length-1]; 
-            page.splice(indexFile, 2, newUrl)
+        if(page[page.length-3] === "es" || page[page.length-3] === "ja" ){
+          page[page.length-3] = lan;  
+        }else{
+          if(page[page.length-3] !== "en"){
+            // let dynamicFolderRegex = /^[a-zA-Z0-9\-_]+$/;
+            // alert(dynamicFolderRegex);
+            // if (dynamicFolderRegex.test(page[page.length - 2])) {
+            if(page[page.length-2] === regulus || page[page.length-2] === devops){
+              file = page[page.length-2]
+              indexFile = page.lastIndexOf(file);
+              newUrl = lan + "/"+page[page.length-2]+"/" + page[page.length-1]; 
+              page.splice(indexFile, 2, newUrl)
+            }else{
+              file = page[page.length-1]
+              indexFile = page.lastIndexOf(file);
+              newUrl = lan + "/general/" + page[page.length-1]; 
+              page.splice(indexFile, 1, newUrl)
+            }
           }
         }
       }
+      salida = page.join('/');
+      window.location.href=salida; 
     }
-    salida = page.join('/');
-    window.location.href=salida; 
   }
   /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
@@ -1836,7 +1846,7 @@ Last updated: 2022 年 8 月 23 日</p>
 <p>Google Cloud アカウント。</p>
 </li>
 <li>
-<p><code>gcloud</code> コマンドラインユーティリティがマシンにインストールされています。インストール手順は <a href="https://cloud.google.com/sdk/docs/installにあります。" class="bare">https://cloud.google.com/sdk/docs/installにあります。</a></p>
+<p><code>gcloud</code> コマンドラインユーティリティがマシンにインストールされています。インストール手順は <a href="https://cloud.google.com/sdk/docs/install" class="bare">https://cloud.google.com/sdk/docs/install</a></p>
 </li>
 </ol>
 </div>

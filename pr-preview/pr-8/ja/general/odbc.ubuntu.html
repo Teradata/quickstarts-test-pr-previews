@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>VirtualBox で Vantage Express を実行する :: Teradata Getting Started</title>
-    <link rel="canonical" href="https://quickstarts.teradata.com/ja/general/getting.started.vbox.html">
-    <meta name="description" content="VirtualBox を使用してラップトップで Vantage Express を実行します。">
-    <meta name="keywords" content="データ ウェアハウス、コンピューティング ストレージの分離、teradata、vantage、クラウド データ プラットフォーム、オブジェクト ストレージ、ビジネス インテリジェンス、エンタープライズ分析">
+    <title>Ubuntu で Vantage を ODBC とともに使用する :: Teradata Getting Started</title>
+    <link rel="canonical" href="https://quickstarts.teradata.com/ja/general/odbc.ubuntu.html">
+    <meta name="description" content="Ubuntu で Vantage を ODBC とともに使用する">
+    <meta name="keywords" content="データ ウェアハウス、コンピューティング ストレージの分離、teradata、vantage、クラウド データ プラットフォーム、オブジェクト ストレージ、ビジネス インテリジェンス、エンタープライズ分析、odbc、ubuntu">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../_/css/site.css">
-<meta property="og:title" content="VirtualBox で Vantage Express を実行する :: Teradata Getting Started">
+<meta property="og:title" content="Ubuntu で Vantage を ODBC とともに使用する :: Teradata Getting Started">
 <meta property="og:type" content="article" />
-<meta property="og:description" content="VirtualBox を使用してラップトップで Vantage Express を実行します。" />
+<meta property="og:description" content="Ubuntu で Vantage を ODBC とともに使用する" />
 <meta property="og:site_name" content="Teradata Getting Started">
 <meta property="og:image:height" content="336"/>
 <meta property="og:image" content="https://www.teradata.com/Content/Assets/default/teradata-logo-social.png">
-<meta property="og:url" content="https://quickstarts.teradata.com/ja/general/getting.started.vbox.html">
+<meta property="og:url" content="https://quickstarts.teradata.com/ja/general/odbc.ubuntu.html">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta property="twitter:image" content="https://www.teradata.com/Content/Assets/default/teradata-logo-social.png" />
@@ -1800,7 +1800,7 @@ window.onclick = function(event) {
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="getting.started.vbox.html">VirtualBox で Vantage Express を実行する</a></li>
+    <li><a href="odbc.ubuntu.html">Ubuntu で Vantage を ODBC とともに使用する</a></li>
   </ul>
 </nav>
 </div>
@@ -1808,42 +1808,30 @@ window.onclick = function(event) {
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
       <div class="page-controls">
       <a href="https://github.com/Teradata/quickstarts/issues"><div class="report-an-issue">Report an issue</div></a>
-      <a href="https://github.com/Teradata/quickstarts-test-pr-previews/blob/HEAD/modules/ROOT/pages/ja/general/getting.started.vbox.adoc"><div class="edit-on-github">Edit on GitHub</div></a>
+      <a href="https://github.com/Teradata/quickstarts-test-pr-previews/blob/HEAD/modules/ROOT/pages/ja/general/odbc.ubuntu.adoc"><div class="edit-on-github">Edit on GitHub</div></a>
     </div>
   <div class="toc-menu">
   </div>
 </aside>
 <article class="doc">
-<h1 class="page">VirtualBox で Vantage Express を実行する</h1>
+<h1 class="page">Ubuntu で Vantage を ODBC とともに使用する</h1>
 <p>Author: <a href="mailto:adam.tworkiewicz@teradata.com">Adam Tworkiewicz</a><br/>
-Last updated: 2023 年 1 月 9 日</p>
+Last updated: 2022 年 1 月 5 日</p>
 <div class="sect1">
 <h2 id="_概要"><a class="anchor" href="#_概要"></a>概要</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>このハウツーでは、Teradata データベースをローカル マシン上で実行してアクセスする方法を示します。Teradata をインストールするにはさまざまな方法があります。このドキュメントでは、クラウド リソースにコストを費やすことなく、最初のクエリーまでの時間を最短にするように最適化します。手順を完了すると、コンピュータ上で動作する Teradata Vantage Express データベースが作成されます。</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-バージョン 17.20 以降、Vantage Express には次の分析パッケージが含まれています: <a href="https://docs.teradata.com/r/Vantage-Analytics-Library-User-Guide/January-2022">Vantage Analytics Library</a>、 <a href="https://docs.teradata.com/r/Teradata-VantageTM-Bring-Your-Own-Model-User-Guide/May-2022">Bring Your Own Model (BYOM)</a>、 <a href="https://docs.teradata.com/r/Teradata-VantageTM-API-Integration-Guide-for-Cloud-Machine-Learning/April-2022">API Integration with AWS SageMaker</a>。
-</td>
-</tr>
-</table>
+<p>このハウツーでは、Ubuntu 上の Teradata Vantage で ODBC ドライバーを使用する方法を説明します。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_前提条件"><a class="anchor" href="#_前提条件"></a>前提条件</h2>
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>次のオペレーティング システムのいずれかを使用するコンピューター: Windows 10、Linux、または Intel ベースの MacOS。</p>
+<p>Teradata Vantage インスタンスへのアクセス。</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1851,144 +1839,52 @@ Last updated: 2023 年 1 月 9 日</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-M1/M2 MacOS システムについては、  を参照してください。
+If you need a test instance of Vantage, you can provision one for free at <a href="https://clearscape.teradata.com/sign-in?utm_source=dev_portal&amp;utm_medium=quickstart_tutorial&amp;utm_campaign=quickstarts" target="_blank" rel="noopener">https://clearscape.teradata.com.</a>
 </td>
 </tr>
 </table>
 </div>
 </li>
 <li>
-<p>少なくとも 1 つのコアと 6 GB RAM を仮想マシン専用にできる 30 GB のディスク領域と十分な CPU および RAM。</p>
+<p>Ubuntu マシンへの root アクセス。</p>
 </li>
-<li>
-<p>ソフトウェアをインストールして実行できる管理者権限。</p>
-</li>
-</ol>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_インストール"><a class="anchor" href="#_インストール"></a>インストール</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_必要なソフトウェアをダウンロードする"><a class="anchor" href="#_必要なソフトウェアをダウンロードする"></a>必要なソフトウェアをダウンロードする</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a href="https://downloads.teradata.com/download/database/teradata-express-for-vmware-player" target="_blank" rel="noopener">Vantage Express VirtualBox の最新バージョン Open Virtual Appliance (OVA)</a>。</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-これまでに Teradata ダウンロード Web サイトを使用したことがない場合は、まず登録する必要があります。
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p><a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="noopener">VirtualBox</a>、バージョン 6.1。</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<code>brew</code> および他のパッケージ マネージャーを使用して VirtualBox をインストールすることもできます。
-</td>
-</tr>
-</table>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_インストーラーを実行する"><a class="anchor" href="#_インストーラーを実行する"></a>インストーラーを実行する</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>インストーラーを実行し、デフォルト値を受け入れて、VirtualBox をインストールします。</p>
-</li>
-</ol>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-VirtualBox には、高い権限を必要とする機能が含まれています。VirtualBox を初めて起動するときは、この昇格されたアクセスを確認するように求められます。VirtualBox カーネル プラグインをアクティブにするためにマシンを再起動する必要がある場合もあります。
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_vantage_express_を実行する"><a class="anchor" href="#_vantage_express_を実行する"></a>Vantage Express を実行する</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>VirtualBoxを起動します。</p>
-</li>
-<li>
-<p><code>ファイル &#8594; アプライアンスのインポート&#8230;&#8203;</code> メニューに移動します。</p>
-</li>
-<li>
-<p><code>ファイル</code> フィールドで、ダウンロードしたOVAファイルを選択します。</p>
-</li>
-<li>
-<p>次の画面で、デフォルトを受け入れて `インポート`をクリックします。</p>
-</li>
-<li>
-<p>メインの VirtualBox パネルに戻り、VM `Vantage  17.20`をダブルクリックして Vantage Express アプライアンスを起動します。</p>
-<div class="imageblock">
+<p>依存関係をインストールします。</p>
+<div class="listingblock">
 <div class="content">
-<img src="../../_images/getting-started-vbox/start-vm.png" alt="VMの起動" width="75%">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">apt update &amp;&amp; DEBIAN_FRONTEND=noninteractive apt install -y wget unixodbc unixodbc-dev iodbc python3-pip</code></pre>
 </div>
 </div>
 </li>
-</ol>
+<li>
+<p>Ubuntu 用の Teradata ODBC ドライバーをインストールします。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">wget https://downloads.teradata.com/download/cdn/connectivity/odbc/17.10.x.x/tdodbc1710__ubuntu_x8664.17.10.00.14-1.tar.gz \
+    &amp;&amp; tar -xzf tdodbc1710__ubuntu_x8664.17.10.00.14-1.tar.gz \
+    &amp;&amp; dpkg -i tdodbc1710/tdodbc1710-17.10.00.14-1.x86_64.deb</code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_サンプルクエリーを実行する"><a class="anchor" href="#_サンプルクエリーを実行する"></a>サンプルクエリーを実行する</h3>
+</li>
+<li>
+<p>次の内容のファイル <code>/etc/odbcinst.ini</code> を作成して、ODBC を構成します:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-odbc hljs" data-lang="odbc">[ODBC Drivers]
+Teradata Database ODBC Driver 17.10=Installed
 
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_virtualbox_ゲスト拡張機能の更新"><a class="anchor" href="#_virtualbox_ゲスト拡張機能の更新"></a>VirtualBox ゲスト拡張機能の更新</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>VirtualBox Guest Extensions は、VM 内で実行されるソフトウェアです。これにより、VirtualBox 上での VM の実行が高速化されます。また、VM 画面の解像度とサイズ変更に対する応答性も向上します。双方向のクリップボードを実装し、ホストとゲストの間でドラッグ アンド ドロップを行います。VM 内の VirtualBox ゲスト拡張機能は、VirtualBox インストールのバージョンと一致する必要があります。最適なパフォーマンスを得るには、VirtualBox Guest Extensions を更新する必要がある場合があります。</p>
-</div>
-<div class="paragraph">
-<p>VirtualBox ゲスト拡張機能を更新するには:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>ストーレジ</code> セクションの <code>SATA ポート 3: [光学ドライブ]</code> をクリックして、VirtualBox Guest Extensions DVD を挿入します:</p>
-<div class="imageblock">
-<div class="content">
-<img src="../../_images/insert-guest-additions-dvd.png" alt="ゲスト追加 DVD を挿入します" width="50%">
-</div>
-</div>
-</li>
-<li>
-<p>VM ウィンドウに戻り、 <code>Gnome ターミナル</code> アプリケーションを起動します。</p>
-</li>
-<li>
-<p>ターミナルで次のコマンドを実行します。</p>
-<div id="update_guest_additions" class="listingblock content-editable emits-gtm-events">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mount /dev/cdrom /media/dvd; /media/dvd/VBoxLinuxAdditions.run</code></pre>
+[Teradata Database ODBC Driver 17.10]
+Description=Teradata Database ODBC Driver 17.10
+Driver=/opt/teradata/client/17.10/odbc_64/lib/tdataodbc_sb64.so</code></pre>
 </div>
 </div>
 </li>
@@ -1997,14 +1893,51 @@ VirtualBox には、高い権限を必要とする機能が含まれています
 </div>
 </div>
 <div class="sect1">
-<h2 id="_次のステップ"><a class="anchor" href="#_次のステップ"></a>次のステップ</h2>
+<h2 id="_odbcを使用する"><a class="anchor" href="#_odbcを使用する"></a>ODBCを使用する</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="../nos.html" class="xref page">オブジェクトストレージに保存されたクエリーデータ</a></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>サンプル Python アプリケーションを使用してインストールを検証します。以下の内容の <code>test.py</code> ファイルを作成します。
+<code>DBCName=192.168.86.33;UID=dbc;PWD=dbc</code> を Teradata Vantage インスタンスの IP アドレス、ユーザー名、パスワードに置き換えます:</p>
+</div>
+<div id="odbc_first_run" class="listingblock content-editable emits-gtm-events">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import pyodbc
+
+print(pyodbc.drivers())
+
+cnxn = pyodbc.connect('DRIVER={Teradata Database ODBC Driver 17.10};DBCName=192.168.86.33;UID=dbc;PWD=dbc;')
+cursor = cnxn.cursor()
+
+cursor.execute("SELECT CURRENT_DATE")
+for row in cursor.fetchall():
+    print(row)
+EOF</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>テスト アプリケーションを実行します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">python3 test.py</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>次のような出力が得られるはずです。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>['ODBC Drivers', 'Teradata Database ODBC Driver 17.10']
+(datetime.date(2022, 1, 5), )</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_まとめ"><a class="anchor" href="#_まとめ"></a>まとめ</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>このハウツーでは、Ubuntu 上の Teradata Vantage で ODBC を使用する方法を説明しました。このハウツーでは、ODBC Teradata ドライバーと依存関係をインストールする方法を示します。次に、ODBC を構成し、単純な Python アプリケーションとの接続を検証する方法を示します。</p>
 </div>
 </div>
 </div>
@@ -2014,7 +1947,7 @@ VirtualBox には、高い権限を必要とする機能が含まれています
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://docs.teradata.com/r/Teradata-StudioTM-and-StudioTM-Express-Installation-Guide-17.20">Teradata® Studio™ および Studio™ Express インストール ガイド</a></p>
+<p><a href="https://docs.teradata.com/search/all?query=ODBC+Driver+for+Teradata+User+Guide&amp;filters=ft%3AisBook~%22true%22&amp;sort=last_update">Teradata® 用 ODBC ドライバー ユーザー ガイド</a></p>
 </li>
 </ul>
 </div>
