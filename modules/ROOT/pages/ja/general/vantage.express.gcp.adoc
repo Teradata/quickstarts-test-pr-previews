@@ -16,7 +16,7 @@ NOTE: クラウドの使用料を支払いたくない場合は、 link:getting.
 == 前提条件
 
 . Google Cloud アカウント。
-. `gcloud` コマンドラインユーティリティがマシンにインストールされています。インストール手順は https://cloud.google.com/sdk/docs/installにあります。
+. `gcloud` コマンドラインユーティリティがマシンにインストールされています。インストール手順は https://cloud.google.com/sdk/docs/install
 
 
 == インストール
