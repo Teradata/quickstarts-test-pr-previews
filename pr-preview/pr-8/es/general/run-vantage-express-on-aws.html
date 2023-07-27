@@ -1456,11 +1456,10 @@ body {
           indexFile = page.lastIndexOf(page[page.length-2]);
           page.splice(indexFile, 1, '');
         }
-
-         
       }else{
-        alert(path);
-        aler(page);
+//        alert(path);
+ //       aler(page);
+ 
         if(lan === "en"){
           indexFile = page.lastIndexOf(page[page.length-3]);
           if (page[page.length-2] === "general"){
@@ -1490,8 +1489,9 @@ body {
               }
             }
           }
-        }
+        }        
       }
+     
       salida = page.join('/');
       window.location.href=salida; 
 //    }
