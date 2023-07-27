@@ -1441,89 +1441,78 @@ body {
     let path, page, indexFile, file, newUrl, salida;
     path = document.location.href;
     page = path.split("/");
-//    alert(path);
+
     let regulus = "regulus";
     let devops = "devops";
-//    alert(page[page.length-1]);
-//    alert(page[page.length-2]);
-//    alert(page[page.length-3]);
-//    if (lan !== page[page.length-3]){
-      if(page[page.length-1]==="" || page[page.length-1]==="index.html" || page[page.length-1]==="#" || page[page.length-1]==="index.html#"){
-        alert("page[page.length-1]: "+page[page.length-1]);
-        alert("page[page.length-2]: "+page[page.length-2]);
-        if(page[page.length-2] !== "ja"){
-          indexFile = page.lastIndexOf(page[page.length-1]);
-          page.splice(indexFile, 1, lan);
-        }else{
-          indexFile = page.lastIndexOf(page[page.length-2]);
-          page.splice(indexFile, 1, '');
+
+    if(page[page.length-1]==="" || page[page.length-1]==="index.html" || page[page.length-1]==="#" || page[page.length-1]==="index.html#") {
+      if(page[page.length-2] !== "ja") {
+        indexFile = page.lastIndexOf(page[page.length-1]);
+        page.splice(indexFile, 1, lan);
+      } else {
+        indexFile = page.lastIndexOf(page[page.length-2]);
+        page.splice(indexFile, 1, '');
+      }
+    } else {
+      if(lan === "en") {
+        indexFile = page.lastIndexOf(page[page.length-3]);
+        if (page[page.length-2] === "general"){
+          file = page[page.length-1]
+        } else {
+          file = page[page.length-2] +"/"+ page[page.length-1];
         }
-      }else{
-//        alert(path);
- //       aler(page);
- 
-        if(lan === "en"){
-          indexFile = page.lastIndexOf(page[page.length-3]);
-          if (page[page.length-2] === "general"){
-            file = page[page.length-1]
-          }else{
-            file = page[page.length-2] +"/"+ page[page.length-1];
-          }
-          page.splice(indexFile, indexFile+1, file);
-        }else{
-          if(page[page.length-3] === "es" || page[page.length-3] === "ja" ){
-            page[page.length-3] = lan;  
-          }else{
-            if(page[page.length-3] !== "en"){
-              // let dynamicFolderRegex = /^[a-zA-Z0-9\-_]+$/;
-              // alert(dynamicFolderRegex);
-              // if (dynamicFolderRegex.test(page[page.length - 2])) {
-              if(page[page.length-2] === regulus || page[page.length-2] === devops){
-                file = page[page.length-2]
-                indexFile = page.lastIndexOf(file);
-                newUrl = lan + "/"+page[page.length-2]+"/" + page[page.length-1]; 
-                page.splice(indexFile, 2, newUrl)
-              }else{
-                file = page[page.length-1]
-                indexFile = page.lastIndexOf(file);
-                newUrl = lan + "/general/" + page[page.length-1]; 
-                page.splice(indexFile, 1, newUrl)
-              }
+        page.splice(indexFile, indexFile+1, file);
+      } else {
+        if(page[page.length-3] === "es" || page[page.length-3] === "ja" ){
+          page[page.length-3] = lan;  
+        } else {
+          if(page[page.length-3] !== "en"){
+            if(page[page.length-2] === regulus || page[page.length-2] === devops){
+              file = page[page.length-2]
+              indexFile = page.lastIndexOf(file);
+              newUrl = lan + "/"+page[page.length-2]+"/" + page[page.length-1]; 
+              page.splice(indexFile, 2, newUrl)
+            } else {
+              file = page[page.length-1]
+              indexFile = page.lastIndexOf(file);
+              newUrl = lan + "/general/" + page[page.length-1]; 
+              page.splice(indexFile, 1, newUrl)
             }
           }
-        }        
-      }
-     
-      salida = page.join('/');
-      window.location.href=salida; 
-//    }
+        }
+      }     
+    }     
+    salida = page.join('/');
+    window.location.href=salida; 
   }
-  /* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-  const dropdownIcon = document.getElementById("dropdownIcon");
+  /* 
+  When the user clicks on the button, 
+  toggle between hiding and showing the dropdown content 
+  */
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+    const dropdownIcon = document.getElementById("dropdownIcon");
 
-  dropdownIcon.classList.toggle("fa-chevron-up"); // Toggle the up-chevron class
-  dropdownIcon.classList.toggle("fa-chevron-down"); // Toggle the down-chevron class
-}
+    dropdownIcon.classList.toggle("fa-chevron-up"); // Toggle the up-chevron class
+    dropdownIcon.classList.toggle("fa-chevron-down"); // Toggle the down-chevron class
+  }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.td-language-selector__toggle')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content1");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-        var dropdownIcon = openDropdown.previousElementSibling.querySelector(".fa-xs");
-        dropdownIcon.classList.add("fa-chevron-down"); // Ensure the icon is reset to the down-chevron class
-        dropdownIcon.classList.remove("fa-chevron-up"); // Remove the up-chevron class if present
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.td-language-selector__toggle')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content1");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+          var dropdownIcon = openDropdown.previousElementSibling.querySelector(".fa-xs");
+          dropdownIcon.classList.add("fa-chevron-down"); // Ensure the icon is reset to the down-chevron class
+          dropdownIcon.classList.remove("fa-chevron-up"); // Remove the up-chevron class if present
+        }
       }
     }
   }
-}
 </script>
 
 <div class="body">
@@ -1546,7 +1535,7 @@ window.onclick = function(event) {
             <div class="tile-section-title" id="getting-access-to-vantage">Teradata Vantage にアクセスする</div>
             <div class="tile-section-container">
               <div class="tile">
-                <a href="run-vantage-express-on-aws.html">
+                <a href="ja/general/run-vantage-express-on-aws.html">
                   <div class="link">
                     <div class="tile-title">Teradata Vantage Express と AWS</div>
                     <div class="tile-content">AWS のクラウドで Teradata Vantage Express を実行する。</div>
@@ -1557,7 +1546,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="vantage.express.gcp.html">
+                <a href="ja/general/vantage.express.gcp.html">
                   <div class="link">
                     <div class="tile-title">Teradata Vantage Express と Google Cloud</div>
                     <div class="tile-content">Google Cloud で Teradata Vantage Express を実行します。</div>
@@ -1568,7 +1557,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="run-vantage-express-on-microsoft-azure.html">
+                <a href="ja/general/run-vantage-express-on-microsoft-azure.html">
                   <div class="link">
                     <div class="tile-title">Azure での Teradata Vantage Express</div>
                     <div class="tile-content">Ejecute Teradata Vantage Express en la nube en Microsoft Azure.</div>
@@ -1579,7 +1568,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="getting.started.vmware.html">
+                <a href="ja/general/getting.started.vmware.html">
                   <div class="link">
                     <div class="tile-title">Teradata Vantage Express en VMWare</div>
                     <div class="tile-content">Aprenda a instalar Teradata Vantage Express en su máquina para desarrollo y pruebas.</div>
@@ -1590,7 +1579,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="getting.started.vbox.html">
+                <a href="ja/general/getting.started.vbox.html">
                   <div class="link">
                     <div class="tile-title">Teradata Vantage Express en VirtualBox</div>
                     <div class="tile-content">Ejecute Teradata Vantage Express en su máquina local con VirtualBox.</div>
@@ -1601,7 +1590,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="getting.started.utm.html">
+                <a href="ja/general/getting.started.utm.html">
                   <div class="link">
                     <div class="tile-title">Teradata Vantage Express en UTM</div>
                     <div class="tile-content">Ejecute Teradata Vantage Express en su Mac con UTM. Conjunto de chips de Apple compatible.</div>
@@ -1615,7 +1604,7 @@ window.onclick = function(event) {
             <div class="tile-section-title" id="browse-content">Tutoriales</div>
             <div class="tile-section-container">
               <div class="tile">
-                <a href="nos.html">
+                <a href="ja/general/nos.html">
                   <div class="link">
                     <div class="tile-title">Consulta de datos en el almacenamiento de objetos</div>
                     <div class="tile-content">Aprenda a analizar los datos almacenados en el almacenamiento de objetos mediante SQL.</div>
@@ -1626,7 +1615,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="ml.html">
+                <a href="ja/general/ml.html">
                   <div class="link">
                     <div class="tile-title">Entrene modelos de ML usando solo SQL</div>
                     <div class="tile-content">Cree modelos de aprendizaje automático usando solo SQL, sin necesidad de codificación ni movimiento de datos.</div>
@@ -1637,7 +1626,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="dbt.html">
+                <a href="ja/general/dbt.html">
                   <div class="link">
                     <div class="tile-title">Use dbt con Teradata Vantage</div>
                     <div class="tile-content">Aprenda a usar dbt, una herramienta ELT líder, con Teradata Vantage.</div>
@@ -1648,7 +1637,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="sto.html">
+                <a href="ja/general/sto.html">
                   <div class="link">
                     <div class="tile-title">Ejecutar scripts en Teradata Vantage</div>
                     <div class="tile-content">Aporta lógica a tus datos. Aproveche la escala de Teradata para trabajar con datos mediante aplicaciones y scripts.</div>
@@ -1659,7 +1648,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="tools-and-utilities/run-bulkloads-efficiently-with-teradata-parallel-transporter.html">
+                <a href="ja/tools-and-utilities/run-bulkloads-efficiently-with-teradata-parallel-transporter.html">
                   <div class="link">
                     <div class="tile-title">Ejecute grandes cargas masivas de manera eficiente</div>
                     <div class="tile-content">Explore herramientas como Teradata Parallel Transporter para cargar grandes cantidades de datos en Teradata Vantage.</div>
@@ -1670,7 +1659,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="perform-time-series-analysis-using-teradata-vantage.html">
+                <a href="ja/general/perform-time-series-analysis-using-teradata-vantage.html">
                   <div class="link">
                     <div class="tile-title">Realizar análisis de series de tiempo</div>
                     <div class="tile-content">Aprenda a hacer análisis de series temporales en Teradata Vantage.</div>
@@ -1681,7 +1670,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="create-parquet-files-in-object-storage.html">
+                <a href="ja/general/create-parquet-files-in-object-storage.html">
                   <div class="link">
                     <div class="tile-title">Crear archivos de Parquet en el almacenamiento de objetos</div>
                     <div class="tile-content">Explore cómo crear archivos de Parquet en el almacenamiento de objetos con datos de Vantage.</div>
@@ -1695,7 +1684,7 @@ window.onclick = function(event) {
             <div class="tile-section-title">How-tos</div>
             <div class="tile-section-container">
               <div class="tile">
-                <a href="jdbc.html">
+                <a href="ja/general/jdbc.html">
                   <div class="link">
                     <div class="tile-title">Conéctese a Teradata Vantage usando JDBC</div>
                     <div class="tile-content">Explore una aplicación Java de muestra que recupera datos de Teradata Vantage mediante JDBC.</div>
@@ -1706,7 +1695,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="jupyter.html">
+                <a href="ja/general/jupyter.html">
                   <div class="link">
                     <div class="tile-title">Use Teradata Vantage desde un cuaderno Jupyter</div>
                     <div class="tile-content">Use cuadernos Jupyter para hacer ciencia de datos en Teradata Vantage.</div>
@@ -1717,7 +1706,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="local.jupyter.hub.html">
+                <a href="ja/general/local.jupyter.hub.html">
                   <div class="link">
                     <div class="tile-title">Implementar extensiones de Teradata Jupyter en JupyterHub</div>
                     <div class="tile-content">Siga las instrucciones para implementar extensiones de Teradata Jupyter en su propia instancia de JupyterHub.</div>
@@ -1728,7 +1717,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="cloud-guides/integrate-teradata-jupyter-extensions-with-google-vertex-ai.html">
+                <a href="ja/cloud-guides/integrate-teradata-jupyter-extensions-with-google-vertex-ai.html">
                   <div class="link">
                     <div class="tile-title">Integre las extensiones de Teradata Jupyter con Google Vertex AI</div>
                     <div class="tile-content">Use Vertex AI Workbench para alojar un cuaderno Jupyterlab con extensiones Teradata Jupyter.</div>
@@ -1739,7 +1728,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="mule.jdbc.example.html">
+                <a href="ja/general/mule.jdbc.example.html">
                   <div class="link">
                     <div class="tile-title">Consultar Teradata Vantage desde un servicio de Mulesoft</div>
                     <div class="tile-content">Este tutorial demuestra cómo ejecutar consultas en Teradata Vantage utilizando un servicio REST integrado en Mulesoft.</div>
@@ -1750,7 +1739,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="odbc.ubuntu.html">
+                <a href="ja/general/odbc.ubuntu.html">
                   <div class="link">
                     <div class="tile-title">Configure ODBC en Ubuntu</div>
                     <div class="tile-content">Siga las instrucciones paso a paso para obtener una configuración ODBC de Teradata Vantage que funcione en Ubuntu.</div>
@@ -1761,7 +1750,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="segment.html">
+                <a href="ja/general/segment.html">
                   <div class="link">
                     <div class="tile-title">Almacenar eventos de Twilio Segment</div>
                     <div class="tile-content">Clone y ejecute un proyecto de muestra que escuche los eventos de Twilio Segment y los almacene en Teradata Vantage.</div>
@@ -1772,7 +1761,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="cloud-guides/sagemaker-with-teradata-vantage.html">
+                <a href="ja/cloud-guides/sagemaker-with-teradata-vantage.html">
                   <div class="link">
                     <div class="tile-title">Use AWS SageMaker with Teradata Vantage</div>
                     <div class="tile-content">In this detailed how-to you will learn how to export data from Teradata Vantage to train a model in AWS SageMaker.</div>
@@ -1783,7 +1772,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="cloud-guides/integrate-teradata-vantage-to-salesforce-using-amazon-appflow.html">
+                <a href="ja/cloud-guides/integrate-teradata-vantage-to-salesforce-using-amazon-appflow.html">
                   <div class="link">
                     <div class="tile-title">Integrate Teradata Vantage to Salesforce using Amazon AppFlow</div>
                     <div class="tile-content">Replicate data between Teradata Vantage and Salesforce using Amazon AppFlow and S3.</div>
@@ -1794,7 +1783,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="cloud-guides/connect-azure-data-share-to-teradata-vantage.html">
+                <a href="ja/cloud-guides/connect-azure-data-share-to-teradata-vantage.html">
                   <div class="link">
                     <div class="tile-title">Connect Azure Data Share to Teradata Vantage</div>
                     <div class="tile-content">Share data in Teradata Vantage using Azure Data Share.</div>
@@ -1805,7 +1794,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="cloud-guides/integrate-teradata-vantage-with-google-cloud-data-catalog.html">
+                <a href="ja/cloud-guides/integrate-teradata-vantage-with-google-cloud-data-catalog.html">
                   <div class="link">
                     <div class="tile-title">Integrate Teradata Vantage with Google Cloud Data Catalog.</div>
                     <div class="tile-content">Put your metadata from Teradata Vantage to Google Cloud Data Catalog and explore data about data in a single tool.</div>
@@ -1816,7 +1805,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="cloud-guides/use-teradata-vantage-with-azure-machine-learning-studio.html">
+                <a href="ja/cloud-guides/use-teradata-vantage-with-azure-machine-learning-studio.html">
                   <div class="link">
                     <div class="tile-title">Use Teradata Vantage with Azure Machine Learning Studio.</div>
                     <div class="tile-content">Use data stored in Teradata Vantage to power a machine learning model developed in Azure Machine Learning Studio.</div>
@@ -1827,7 +1816,7 @@ window.onclick = function(event) {
                 </a>
               </div>
               <div class="tile">
-                <a href="other-integrations/integrate-teradata-vantage-with-knime.html">
+                <a href="ja/other-integrations/integrate-teradata-vantage-with-knime.html">
                   <div class="link">
                     <div class="tile-title">Integrate Teradata Vantage with KNIME Analytics Platform.</div>
                     <div class="tile-content">Use KNIME Analytics Platform to analyze data in Teradata Vantage.</div>
