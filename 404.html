@@ -953,6 +953,7 @@ span.search-result-highlight {
 <link rel="icon" href="/_/img/favicon.ico" type="image/x-icon">
   </head>
   <body class="status-404">
+<script src="/_/js/lang.js"></script>
 <style>
 @media screen and (min-width: 1025px){
 body {
@@ -1308,19 +1309,21 @@ body {
         </li>
       </ul>
       <div class="td-language-selector dropdown1">
-        <button onclick="myFunction()" class="td-language-selector__toggle selected">
+        <button onclick="langOptions()" class="td-language-selector__toggle selected">
           English <i class="fas fa-chevron-down fa-xs m" id="dropdownIcon"></i>
         </button>
         <div id="myDropdown" class="nav-2 td-language-selector__dropdown dropdown-content1">
-          <li lang="en-US" class="td-language-selector__menu-item" onclick="miFuncion('en')">
+          <li lang="en-US" class="td-language-selector__menu-item" onclick="switchLanguage('en')">
             <b><a href="#" class="td-language-selector__location no-underline">English</a></b>
           </li>
-          <li lang="ja-JP" class="td-language-selector__menu-item" onclick="miFuncion('ja')">
+          <li lang="ja-JP" class="td-language-selector__menu-item" onclick="switchLanguage('ja')">
             <a href="#" class="td-language-selector__location no-underline">日本</a>
           </li>
-          <li lang="es-MX" class="td-language-selector__menu-item" onclick="miFuncion('es')">
+          <!--
+          <li lang="es-MX" class="td-language-selector__menu-item" onclick="switchLanguage('es')">
             <a href="#" class="td-language-selector__location no-underline">Español</a>
           </li>
+          -->
         </div>
       </div>
     </div>
@@ -1433,52 +1436,7 @@ body {
   <div class="page-blackout" tabindex="-1" aria-hidden="true"></div>
 </header>
 
-<script>
-  function miFuncion(lan) {
-    // alert("lenguage: "+lan);
-    var path = document.location.href;
-    // alert("path: "+path);
-    var page = path.split("/");
-    // alert("Pagina: "+page);
-    // page[page.length-2] = lan;  
-    // alert("pagina1-> "+page[page.length-3]);
-    if( page[page.length-3] === "en" || page[page.length-3] === "es" || page[page.length-3] === "ja" ) {
-      page[page.length-3] = lan;  
-      // alert("pagina2-> "+page[page.length-3]);
-    }else{
-      arr.splice(page.length-3, 0, lan);  
-    }
-    var salida = page.join('/');
-    // alert("Salida: "+salida);
-    window.location.href=salida; 
-  }
-  /* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-  const dropdownIcon = document.getElementById("dropdownIcon");
 
-  dropdownIcon.classList.toggle("fa-chevron-up"); // Toggle the up-chevron class
-  dropdownIcon.classList.toggle("fa-chevron-down"); // Toggle the down-chevron class
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.td-language-selector__toggle')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content1");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-        var dropdownIcon = openDropdown.previousElementSibling.querySelector(".fa-xs");
-        dropdownIcon.classList.add("fa-chevron-down"); // Ensure the icon is reset to the down-chevron class
-        dropdownIcon.classList.remove("fa-chevron-up"); // Remove the up-chevron class if present
-      }
-    }
-  }
-}
-</script>
 
 <div class="body">
 <div class="nav-container">
@@ -1487,14 +1445,19 @@ window.onclick = function(event) {
 
 <script>
   var path = document.location.href;
-  var language = path.match(/\/(en|es|ja)\//)[1];
-  // alert(language);
+  var matchResult = path.match(/\/(es|ja)\//);
+  var language;
+  if (matchResult) {
+    language = matchResult[1];
+  } else {
+    language = 'en';
+  }
+  console.log("lan: ",language);
 
   document.getElementById(language).style.visibility = 'visible';
   document.getElementById(language).style.display = 'block';
   var parts = path.split('/');
   var pagina = parts[parts.length-2];
-  // alert(pagina);
   var elementosMenu = document.querySelectorAll('.nav-item a');
   elementosMenu.forEach(function(elemento) {
     if (elemento.href === path) {

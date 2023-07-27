@@ -956,6 +956,7 @@ span.search-result-highlight {
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
   </head>
   <body class="article">
+<script src="../../_/js/lang.js"></script>
 <style>
 @media screen and (min-width: 1025px){
 body {
@@ -1311,19 +1312,21 @@ body {
         </li>
       </ul>
       <div class="td-language-selector dropdown1">
-        <button onclick="myFunction()" class="td-language-selector__toggle selected">
+        <button onclick="langOptions()" class="td-language-selector__toggle selected">
           English <i class="fas fa-chevron-down fa-xs m" id="dropdownIcon"></i>
         </button>
         <div id="myDropdown" class="nav-2 td-language-selector__dropdown dropdown-content1">
-          <li lang="en-US" class="td-language-selector__menu-item" onclick="miFuncion('en')">
+          <li lang="en-US" class="td-language-selector__menu-item" onclick="switchLanguage('en')">
             <b><a href="#" class="td-language-selector__location no-underline">English</a></b>
           </li>
-          <li lang="ja-JP" class="td-language-selector__menu-item" onclick="miFuncion('ja')">
+          <li lang="ja-JP" class="td-language-selector__menu-item" onclick="switchLanguage('ja')">
             <a href="#" class="td-language-selector__location no-underline">日本</a>
           </li>
-          <li lang="es-MX" class="td-language-selector__menu-item" onclick="miFuncion('es')">
+          <!--
+          <li lang="es-MX" class="td-language-selector__menu-item" onclick="switchLanguage('es')">
             <a href="#" class="td-language-selector__location no-underline">Español</a>
           </li>
+          -->
         </div>
       </div>
     </div>
@@ -1436,52 +1439,7 @@ body {
   <div class="page-blackout" tabindex="-1" aria-hidden="true"></div>
 </header>
 
-<script>
-  function miFuncion(lan) {
-    // alert("lenguage: "+lan);
-    var path = document.location.href;
-    // alert("path: "+path);
-    var page = path.split("/");
-    // alert("Pagina: "+page);
-    // page[page.length-2] = lan;  
-    // alert("pagina1-> "+page[page.length-3]);
-    if( page[page.length-3] === "en" || page[page.length-3] === "es" || page[page.length-3] === "ja" ) {
-      page[page.length-3] = lan;  
-      // alert("pagina2-> "+page[page.length-3]);
-    }else{
-      arr.splice(page.length-3, 0, lan);  
-    }
-    var salida = page.join('/');
-    // alert("Salida: "+salida);
-    window.location.href=salida; 
-  }
-  /* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-  const dropdownIcon = document.getElementById("dropdownIcon");
 
-  dropdownIcon.classList.toggle("fa-chevron-up"); // Toggle the up-chevron class
-  dropdownIcon.classList.toggle("fa-chevron-down"); // Toggle the down-chevron class
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.td-language-selector__toggle')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content1");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-        var dropdownIcon = openDropdown.previousElementSibling.querySelector(".fa-xs");
-        dropdownIcon.classList.add("fa-chevron-down"); // Ensure the icon is reset to the down-chevron class
-        dropdownIcon.classList.remove("fa-chevron-up"); // Remove the up-chevron class if present
-      }
-    }
-  }
-}
-</script>
 
 <div class="body">
 <div class="nav-container" data-component="ROOT" data-version="master">
@@ -1498,22 +1456,22 @@ window.onclick = function(event) {
     <span class="nav-text">Get access to Vantage</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/run-vantage-express-on-aws.html">Vantage Express on AWS</a>
+    <a class="nav-link" href="../../run-vantage-express-on-aws.html">Vantage Express on AWS</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/vantage.express.gcp.html">Vantage Express on Google Cloud</a>
+    <a class="nav-link" href="../../vantage.express.gcp.html">Vantage Express on Google Cloud</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/run-vantage-express-on-microsoft-azure.html">Vantage Express on Azure</a>
+    <a class="nav-link" href="../../run-vantage-express-on-microsoft-azure.html">Vantage Express on Azure</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/getting.started.vmware.html">Vantage Express on VMware</a>
+    <a class="nav-link" href="../../getting.started.vmware.html">Vantage Express on VMware</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/getting.started.vbox.html">Vantage Express on VirtualBox</a>
+    <a class="nav-link" href="../../getting.started.vbox.html">Vantage Express on VirtualBox</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/getting.started.utm.html">Vantage Express on UTM</a>
+    <a class="nav-link" href="../../getting.started.utm.html">Vantage Express on UTM</a>
   </li>
 </ul>
   </li>
@@ -1522,17 +1480,17 @@ window.onclick = function(event) {
     <span class="nav-text">Connect to Vantage</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/install-teradata-studio-on-mac-m1-m2.html">Use Teradata Studio/Express on Apple Mac M1/M2</a>
+    <a class="nav-link" href="../../install-teradata-studio-on-mac-m1-m2.html">Use Teradata Studio/Express on Apple Mac M1/M2</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/other-integrations/configure-a-teradata-vantage-connection-in-dbeaver.html">Configure a Teradata Vantage connection in DBeaver</a>
+    <a class="nav-link" href="../../other-integrations/configure-a-teradata-vantage-connection-in-dbeaver.html">Configure a Teradata Vantage connection in DBeaver</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Configure ODBC</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../en/general/odbc.ubuntu.html">Ubuntu</a>
+    <a class="nav-link" href="../../odbc.ubuntu.html">Ubuntu</a>
   </li>
 </ul>
   </li>
@@ -1543,34 +1501,34 @@ window.onclick = function(event) {
     <span class="nav-text">Manage data</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/nos.html">Query data stored in object storage</a>
+    <a class="nav-link" href="../../nos.html">Query data stored in object storage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/dbt.html">dbt with Teradata Vantage</a>
+    <a class="nav-link" href="../../elt/use-airbyte-to-load-data-from-external-sources-to-teradata-vantage.html">Use Airbyte to load data from external sources to Teradata Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/advanced-dbt.html">Advanced dbt use cases with Teradata Vantage</a>
+    <a class="nav-link" href="../../dbt.html">dbt with Teradata Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/tools-and-utilities/run-bulkloads-efficiently-with-teradata-parallel-transporter.html">Load data with TPT</a>
+    <a class="nav-link" href="../../advanced-dbt.html">Advanced dbt use cases with Teradata Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/create-parquet-files-in-object-storage.html">Create Parquet files in object storage</a>
+    <a class="nav-link" href="../../create-parquet-files-in-object-storage.html">Create Parquet files in object storage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/other-integrations/execute-airflow-workflows-that-use-dbt-with-teradata-vantage.html">Execute Airflow workflows that use dbt with Teradata Vantage</a>
+    <a class="nav-link" href="../../other-integrations/execute-airflow-workflows-that-use-dbt-with-teradata-vantage.html">Execute Airflow workflows that use dbt with Teradata Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/cloud-guides/integrate-teradata-vantage-to-salesforce-using-amazon-appflow.html">Connect Teradata Vantage to Salesforce using Amazon Appflow</a>
+    <a class="nav-link" href="../../cloud-guides/integrate-teradata-vantage-to-salesforce-using-amazon-appflow.html">Connect Teradata Vantage to Salesforce using Amazon Appflow</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/segment.html">Store events from Twilio Segment</a>
+    <a class="nav-link" href="../../segment.html">Store events from Twilio Segment</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/cloud-guides/connect-azure-data-share-to-teradata-vantage.html">Connect Azure Data Share to Teradata Vantage</a>
+    <a class="nav-link" href="../../cloud-guides/connect-azure-data-share-to-teradata-vantage.html">Connect Azure Data Share to Teradata Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/cloud-guides/integrate-teradata-vantage-with-google-cloud-data-catalog.html">Integrate Teradata Vantage with Google Cloud Data Catalog</a>
+    <a class="nav-link" href="../../cloud-guides/integrate-teradata-vantage-with-google-cloud-data-catalog.html">Integrate Teradata Vantage with Google Cloud Data Catalog</a>
   </li>
 </ul>
   </li>
@@ -1579,13 +1537,13 @@ window.onclick = function(event) {
     <span class="nav-text">Create applications</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/jdbc.html">Connect to Vantage using JDBC</a>
+    <a class="nav-link" href="../../jdbc.html">Connect to Vantage using JDBC</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/mule.jdbc.example.html">Query Teradata Vantage from a Mule service</a>
+    <a class="nav-link" href="../../mule.jdbc.example.html">Query Teradata Vantage from a Mule service</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/query-service/send-queries-using-rest-api.html">Send queries using REST API</a>
+    <a class="nav-link" href="../../query-service/send-queries-using-rest-api.html">Send queries using REST API</a>
   </li>
 </ul>
   </li>
@@ -1594,46 +1552,46 @@ window.onclick = function(event) {
     <span class="nav-text">Analyze data</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/jupyter.html">Use Vantage from a Jupyter notebook</a>
+    <a class="nav-link" href="../../jupyter.html">Use Vantage from a Jupyter notebook</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/local.jupyter.hub.html">Deploy Teradata Jupyter extensions to JupyterHub</a>
+    <a class="nav-link" href="../../local.jupyter.hub.html">Deploy Teradata Jupyter extensions to JupyterHub</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/ml.html">Train ML models in Vantage</a>
+    <a class="nav-link" href="../../ml.html">Train ML models in Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/sto.html">Run scripts on Vantage</a>
+    <a class="nav-link" href="../../sto.html">Run scripts on Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/general/perform-time-series-analysis-using-teradata-vantage.html">Perform time series analysis</a>
+    <a class="nav-link" href="../../perform-time-series-analysis-using-teradata-vantage.html">Perform time series analysis</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/modelops/deploy-and-monitor-machine-learning-models-with-teradata-modelops-and-byom.html">ModelOps - Import and Deploy your first BYOM Model</a>
+    <a class="nav-link" href="../../modelops/deploy-and-monitor-machine-learning-models-with-teradata-modelops-and-byom.html">ModelOps - Import and Deploy your first BYOM Model</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/modelops/deploy-and-monitor-machine-learning-models-with-teradata-modelops-and-git.html">ModelOps - Import and Deploy your first GIT Model</a>
+    <a class="nav-link" href="../../modelops/deploy-and-monitor-machine-learning-models-with-teradata-modelops-and-git.html">ModelOps - Import and Deploy your first GIT Model</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/modelops/using-feast-feature-store-with-teradata-vantage.html">Using Teradata with FEAST</a>
+    <a class="nav-link" href="../../modelops/using-feast-feature-store-with-teradata-vantage.html">Using Teradata with FEAST</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/cloud-guides/sagemaker-with-teradata-vantage.html">Use AWS SageMaker with Teradata Vantage</a>
+    <a class="nav-link" href="../../cloud-guides/sagemaker-with-teradata-vantage.html">Use AWS SageMaker with Teradata Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/cloud-guides/use-teradata-vantage-with-azure-machine-learning-studio.html">Use Teradata Vantage with Azure Machine Learning Studio</a>
+    <a class="nav-link" href="../../cloud-guides/use-teradata-vantage-with-azure-machine-learning-studio.html">Use Teradata Vantage with Azure Machine Learning Studio</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/cloud-guides/integrate-teradata-jupyter-extensions-with-google-vertex-ai.html">Integrate Teradata Jupyter extensions with Google Vertex AI</a>
+    <a class="nav-link" href="../../cloud-guides/integrate-teradata-jupyter-extensions-with-google-vertex-ai.html">Integrate Teradata Jupyter extensions with Google Vertex AI</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/cloud-guides/integrate-teradata-jupyter-extensions-with-sagemaker.html">Integrate Teradata Jupyter extensions with SageMaker notebook instance</a>
+    <a class="nav-link" href="../../cloud-guides/integrate-teradata-jupyter-extensions-with-sagemaker.html">Integrate Teradata Jupyter extensions with SageMaker notebook instance</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/business-intelligence/create-stunning-visualizations-in-power-bi-using-data-from-teradata-vantage.html">Create Vizualizations in Power BI using Vantage</a>
+    <a class="nav-link" href="../../business-intelligence/create-stunning-visualizations-in-power-bi-using-data-from-teradata-vantage.html">Create Vizualizations in Power BI using Vantage</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/other-integrations/integrate-teradata-vantage-with-knime.html">Integrate Teradata Vantage with KNIME Analytics Platform</a>
+    <a class="nav-link" href="../../other-integrations/integrate-teradata-vantage-with-knime.html">Integrate Teradata Vantage with KNIME Analytics Platform</a>
   </li>
 </ul>
   </li>
@@ -1646,7 +1604,7 @@ window.onclick = function(event) {
     <span class="nav-text">Financial</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../en/jupyter-demos/gcp-vertex-ai-pipelines-vantage-byom-housing-example.html">Google Cloud Vertex AI Pipelines Vantage BYOM Housing Example</a>
+    <a class="nav-link" href="../../jupyter-demos/gcp-vertex-ai-pipelines-vantage-byom-housing-example.html">Google Cloud Vertex AI Pipelines Vantage BYOM Housing Example</a>
   </li>
 </ul>
   </li>
@@ -1657,16 +1615,16 @@ window.onclick = function(event) {
     <span class="nav-text">Regulus (preview)</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/regulus/install-regulus-docker-image.html">Install and Configure Regulus Using Docker</a>
+    <a class="nav-link" href="../../regulus/install-regulus-docker-image.html">Install and Configure Regulus Using Docker</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/regulus/getting-started-with-regulus.html">Run a Sample Workload in JupyterLab</a>
+    <a class="nav-link" href="../../regulus/getting-started-with-regulus.html">Run a Sample Workload in JupyterLab</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/regulus/regulus-magic-reference.html">Regulus JupyterLab Magic Command Reference</a>
+    <a class="nav-link" href="../../regulus/regulus-magic-reference.html">Regulus JupyterLab Magic Command Reference</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../en/regulus/using-regulus-workspace-cli.html">Use Regulus With Workspaces CLI</a>
+    <a class="nav-link" href="../../regulus/using-regulus-workspace-cli.html">Use Regulus With Workspaces CLI</a>
   </li>
 </ul>
   </li>
@@ -1730,14 +1688,19 @@ window.onclick = function(event) {
 
 <script>
   var path = document.location.href;
-  var language = path.match(/\/(en|es|ja)\//)[1];
-  // alert(language);
+  var matchResult = path.match(/\/(es|ja)\//);
+  var language;
+  if (matchResult) {
+    language = matchResult[1];
+  } else {
+    language = 'en';
+  }
+  console.log("lan: ",language);
 
   document.getElementById(language).style.visibility = 'visible';
   document.getElementById(language).style.display = 'block';
   var parts = path.split('/');
   var pagina = parts[parts.length-2];
-  // alert(pagina);
   var elementosMenu = document.querySelectorAll('.nav-item a');
   elementosMenu.forEach(function(elemento) {
     if (elemento.href === path) {
