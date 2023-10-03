@@ -1,4 +1,4 @@
-= Teradata Explain Plan 
+= Test Japanese Translation.
 :experimental:
 :page-author: Obed Vega
 :page-email: obed.vega@teradata.com
