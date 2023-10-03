@@ -1,0 +1,19 @@
+= Test Japanese Translation.
+:experimental:
+:page-author: Obed Vega
+:page-email: obed.vega@teradata.com
+:page-revdate: Oct 3rd, 2023
+:description: Test Japanese Translation. 
+:keywords: data warehouses, compute storage separation, Teradata, vantage, cloud data platform, object storage, business intelligence, enterprise analytics, explain plan
+
+== Overview
+This is a mockup file to test the automated translation before moving into production.
+
+== Prerequisites
+
+You need access to this repo and XTM cloud github connect to test the translation.
+
+== Summary
+
+If the translation kicks succesfully will move into the next steps.
+If not we will take the results of the test and see what inprovments do we need to make in order to automa properlly the translations.
