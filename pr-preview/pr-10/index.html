@@ -1438,7 +1438,7 @@ body {
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
  
 
 <div class="body"  id="app">
@@ -1451,9 +1451,8 @@ body {
             <div class="short-description">Get quickly up to speed with Teradata Vantage. Learn about features. Find how-tos for common tasks. Explore sample source code.</div>
             <div class="button-container">
               <!-- Utiliza tu componente Vue -->
-                <boton1></boton1>
-                <boton2></boton2>
-              <!-- Utiliza tu componente Vue -->
+                <button1></button1>
+                <button2></button2>
         <!--      <a class="call-to-action-button" href="#getting-access-to-vantage">Get access to Teradata Vantage</a> 
               <a class="call-to-action-button-secondary" href="#browse-content">Browse content</a>-->
             </div>
@@ -1863,28 +1862,28 @@ body {
     </div>
   </main>
 </div>
-<template id="miComponente1">
-    <a href="https://www.teradata.com/" class="mi-boton">Contribute</a>
+<template id="myComponent1">
+    <a href="https://www.teradata.com/experience" class="my-button">Contribute</a>
   </template>
-<template id="miComponente2">
-  <a href="https://www.teradata.com/" class="mi-boton">Request</a>
+<template id="myComponent2">
+  <a href="https://www.teradata.com/" class="my-button">Request</a>
 </template>
 <script>
   // Crea e monta una instancia de Vue
   new Vue({
     el: '#app',
     components: {
-      'boton1': {
-        template: '#miComponente1'
+      'button1': {
+        template: '#myComponent1'
       },
-      'boton2': {
-        template: '#miComponente2'
+      'button2': {
+        template: '#myComponent2'
       }
     }
   });
 </script>
 <style>
-.mi-boton{
+.my-button{
   color: #00233C;
   font-family: Inter;
   font-size: 18px;
@@ -1896,7 +1895,7 @@ body {
   padding: 16px;
   height: 58px;
 }  
-.mi-boton:hover {
+.my-button:hover {
   text-decoration: none;
   background-color: #dfdddd;
 }  
