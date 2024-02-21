@@ -21,12 +21,12 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const { context, github } = require('@actions/github');
-            const artifactLink = 'link-to-your-artifact';
+            const { context: repoContext, github } = require('@actions/github');
+            const artifactLink = `${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}/artifacts`;
             const commentBody = `### Lighthouse Report\n\nThe Lighthouse report is available [here](${artifactLink}).`;
             github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
+              issue_number: repoContext.issue.number,
+              owner: repoContext.repo.owner,
+              repo: repoContext.repo.repo,
               body: commentBody
             });
