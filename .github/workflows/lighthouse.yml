@@ -1,36 +1,18 @@
-name: Lighthouse CI
+name: Lighthouse Report
 on: [pull_request]
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v10
+      - run: mkdir /tmp/artifacts
+      - name: Run Lighthouse
+        uses: foo-software/lighthouse-check-action@master
         with:
+          outputDirectory: /tmp/artifacts
           urls: 'https://quickstarts.teradata.com/'
-          budgetPath: ./budget.json
-          uploadArtifacts: true
-          temporaryPublicStorage: true
-
-      - name: Get Lighthouse Report
-        run: |
-          mkdir -p lighthouse_report
-          cp lighthouse/*.html lighthouse_report/
-
-      - name: Publish Lighthouse Report
-        uses: actions/github-script@v5
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const fs = require('fs');
-            const { context, github } = require('@actions/github');
-            const htmlReport = fs.readFileSync('lighthouse_report/report.html', 'utf8');
-            const comment = `### Lighthouse Report\n\n${htmlReport}`;
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: comment
-            });
+          name: Lighthouse reports
+          path: /tmp/artifacts
