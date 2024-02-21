@@ -16,4 +16,5 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          outputDirectory: /tmp/artifacts
+          path: build/site
+          cname: quickstarts.teradata.com
