@@ -17,4 +17,9 @@ jobs:
           name: Lighthouse reports
           path: /tmp/artifacts
           accessToken: ${{ secrets.GITHUB_TOKEN }}
-          outputDirectory: /tmp/artifacts
+      - name: Comment on PR
+        uses: pullreminders/comment-on-pr@v1
+        with:
+          message: |
+            ### Lighthouse Report
+            The Lighthouse report is available [here](link-to-your-artifact).
