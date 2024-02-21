@@ -16,17 +16,11 @@ jobs:
         with:
           name: Lighthouse reports
           path: /tmp/artifacts
-      - name: Comment on PR
+      - name: Tets Script
         uses: actions/github-script@v7
+        id: set-result
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const { context: repoContext, github: gh } = require('@actions/github');
-            const artifactLink = `${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}/artifacts`;
-            const commentBody = `### Lighthouse Report\n\nThe Lighthouse report is available [here](${artifactLink}).`;
-            gh.issues.createComment({
-              issue_number: repoContext.issue.number,
-              owner: repoContext.repo.owner,
-              repo: repoContext.repo.repo,
-              body: commentBody
-            });
+          script: return "Hello!"
+          result-encoding: string
+      - name: Get result
+        run: echo "${{steps.set-result.outputs.result}}"
