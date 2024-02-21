@@ -1,7 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
- 
+<script src="node_modules/@obedvega/vuejs-components-library/dist/umd.js"></script>
 
-<div class="body"  id="app">
+<div class="body" id="app">
   <main class="article">
     <div class="content landing">
       <div class="landing-container">
@@ -13,6 +13,7 @@
               <!-- Utiliza tu componente Vue -->
                 <button1></button1>
                 <button2></button2>
+                <Botton></Botton>
         <!--      <a class="call-to-action-button" href="#getting-access-to-vantage">Get access to Teradata Vantage</a> 
               <a class="call-to-action-button-secondary" href="#browse-content">Browse content</a>-->
             </div>
@@ -428,6 +429,9 @@
 <template id="myComponent2">
   <a href="https://www.teradata.com/" class="my-button">Request</a>
 </template>
+<template id="myComponent3">
+   <Botton></Botton>
+</template>
 <script>
   // Crea e monta una instancia de Vue
   new Vue({
@@ -438,7 +442,8 @@
       },
       'button2': {
         template: '#myComponent2'
-      }
+      },
+      'Botton': Vue.component('Botton')
     }
   });
 </script>
