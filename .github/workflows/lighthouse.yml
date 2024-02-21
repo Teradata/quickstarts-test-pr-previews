@@ -8,12 +8,7 @@ jobs:
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v10
         with:
-          urls: 'https://quickstarts.teradata.com/, https://quickstarts.teradata.com/getting-started-with-csae.html'
+          urls: 'https://quickstarts.teradata.com/,https://quickstarts.teradata.com/getting-started-with-csae.html'
           budgetPath: ./budget.json # test performance budgets
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
-      - name: Upload artifacts
-        uses: actions/upload-artifact@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          outputDirectory: /tmp/artifacts
