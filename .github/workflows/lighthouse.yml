@@ -18,8 +18,16 @@ jobs:
           path: /tmp/artifacts
           accessToken: ${{ secrets.GITHUB_TOKEN }}
       - name: Comment on PR
-        uses: pullreminders/comment-on-pr@v1
+        uses: actions/github-script@v5
         with:
-          message: |
-            ### Lighthouse Report
-            The Lighthouse report is available [here](link-to-your-artifact).
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { context, github } = require('@actions/github');
+            const artifactLink = 'link-to-your-artifact';
+            const commentBody = `### Lighthouse Report\n\nThe Lighthouse report is available [here](${artifactLink}).`;
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: commentBody
+            });
