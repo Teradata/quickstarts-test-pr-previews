@@ -29,12 +29,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const gh = require('@actions/github');
-            const ghContext = gh.context;
-            const octokit = new gh.GitHub(process.env.GITHUB_TOKEN);
-            octokit.issues.createComment({
-              owner: ghContext.repo.owner,
-              repo: ghContext.repo.repo,
-              issue_number: ghContext.issue.number,
-              body: 'Hello!'
-            });
+            const github = require('@actions/github');
+            const octokit = new github.GitHub(process.env.GITHUB_TOKEN);
+            const user = await octokit.users.getAuthenticated();
+            console.log(`El token pertenece al usuario: ${user.data.login}`);
