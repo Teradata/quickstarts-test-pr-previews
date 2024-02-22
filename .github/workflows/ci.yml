@@ -33,3 +33,8 @@ jobs:
         with:
           name: Lighthouse reports
           path: /tmp/artifacts
+      - name: Leave comment
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          moutputDirectory: /tmp/artifacts
