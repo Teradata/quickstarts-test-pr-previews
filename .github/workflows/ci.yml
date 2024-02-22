@@ -22,6 +22,7 @@ jobs:
           preview-branch: gh-pages
           source-dir: build/site
           umbrella-dir: pr-preview
+      - run: mkdir /tmp/artifacts    
       - name: Run Lighthouse Report
         uses: foo-software/lighthouse-check-action@master
         with:
