@@ -27,7 +27,7 @@ jobs:
         uses: foo-software/lighthouse-check-action@master
         with:
           outputDirectory: /tmp/artifacts
-          urls: ${{ toJson([steps.pr-preview.outputs.url]) }}
+          urls: 'https://quickstarts.teradata.com,https://quickstarts.teradata.com/nos.html,${{ steps.pr-preview.outputs.url }}'
       - name: Upload Lighthouse artifacts
         uses: actions/upload-artifact@master
         with:
