@@ -22,16 +22,12 @@ jobs:
           source-dir: build/site
           umbrella-dir: pr-preview
           action: auto
-      - name: Get PR Preview URL
-        run: echo "::set-env name=PR_PREVIEW_URL::$(cat pr-preview-url.txt)"
-        env:
-          PR_PREVIEW_URL: ${{ steps.pr-preview.outputs.url }}
       - run: mkdir /tmp/artifacts
       - name: Run Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:
           outputDirectory: /tmp/artifacts
-          urls: ${{ env.PR_PREVIEW_URL }}
+          urls: ${{ steps.pr-preview.outputs.url }}
       - name: Upload Lighthouse artifacts
         uses: actions/upload-artifact@master
         with:
