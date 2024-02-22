@@ -24,7 +24,7 @@ jobs:
           action: auto
       - run: mkdir /tmp/artifacts
       - name: Test URL
-        run: echo "${{ steps.pr-preview.outputs.url }}"
+        run: echo ${{ steps.pr-preview.outputs.url }}
       - name: Run Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:
