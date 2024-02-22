@@ -9,7 +9,7 @@ on:
       - opened
       - synchronize    
 jobs:
-  deploy-preview:
+  deploy-preview-and-lighthouse:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,3 +22,14 @@ jobs:
           source-dir: build/site
           umbrella-dir: pr-preview
           action: auto
+      - run: mkdir /tmp/artifacts
+      - name: Run Lighthouse
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          outputDirectory: /tmp/artifacts
+          urls: 'https://quickstarts.teradata.com,https://quickstarts.teradata.com/nos.html'
+      - name: Upload Lighthouse artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: Lighthouse reports
+          path: /tmp/artifacts
