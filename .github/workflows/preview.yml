@@ -32,4 +32,5 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: Lighthouse reports
+          accessToken: ${{ secrets.GITHUB_TOKEN }}
           path: /tmp/artifacts
