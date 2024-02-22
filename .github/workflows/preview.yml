@@ -27,7 +27,7 @@ jobs:
         uses: foo-software/lighthouse-check-action@master
         with:
           outputDirectory: /tmp/artifacts
-          urls: ${{ steps.pr-preview.outputs.url }}
+          urls: ${{ toJson([steps.pr-preview.outputs.url]) }}
       - name: Upload Lighthouse artifacts
         uses: actions/upload-artifact@master
         with:
