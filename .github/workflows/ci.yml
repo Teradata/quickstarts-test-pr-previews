@@ -36,5 +36,5 @@ jobs:
       - name: Leave comment
         uses: foo-software/lighthouse-check-action@master
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          accessToken: ${{ secrets.GITHUB_TOKEN }}
           moutputDirectory: /tmp/artifacts
