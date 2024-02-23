@@ -37,4 +37,4 @@ jobs:
         uses: foo-software/lighthouse-check-action@master
         with:
           accessToken: ${{ secrets.GITHUB_TOKEN }}
-          moutputDirectory: /tmp/artifacts
+          outputDirectory: /tmp/artifacts
