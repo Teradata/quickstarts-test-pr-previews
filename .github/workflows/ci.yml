@@ -38,3 +38,4 @@ jobs:
         with:
           accessToken: ${{ secrets.GITHUB_TOKEN }}
           outputDirectory: /tmp/artifacts
+          urls: 'https://quickstarts.teradata.com,https://quickstarts.teradata.com/nos.html'
