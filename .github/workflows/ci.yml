@@ -41,3 +41,5 @@ jobs:
           outputDirectory: /tmp/artifacts
           urls: 'https://quickstarts.teradata.com,https://quickstarts.teradata.com/nos.html'
           device: 'all' 
+      - name: Prueba Test Nombre
+        run: echo "::set-output name=pull_request_number::$(gh pr view --json number -q .number || echo "")"
