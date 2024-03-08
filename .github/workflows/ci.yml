@@ -2,6 +2,7 @@ name: CI
 on:
   workflow_dispatch:
   pull_request:
+    types: [opened, edited, reopened, closed, synchronize]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,3 +15,48 @@ jobs:
           cache: npm
       - name: Run Antora
         run: ./buildw
+      - name: Run PR Preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          preview-branch: gh-pages
+          source-dir: build/site
+          umbrella-dir: pr-preview
+      - run: mkdir /tmp/artifacts    
+      - name: Run Lighthouse Report
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          outputDirectory: /tmp/artifacts
+          urls: 'https://quickstarts.teradata.com,https://quickstarts.teradata.com/nos.html'
+          device: 'all' 
+      - uses: actions/checkout@master
+      - run: npm install
+      - name: Run Lighthouse Check
+        uses: foo-software/lighthouse-check-action@master
+        id: lighthouseCheck
+        with:
+          urls: 'https://teradata.github.io/quickstarts-test-pr-previews/pr-preview/pr-${{ github.event.pull_request.number }}/'
+      - name: Handle Lighthouse Check results
+        uses: actions/checkout@master
+        with:
+          lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
+          minAccessibilityScore: "50"
+          minBestPracticesScore: "50"
+          minPerformanceScore: "95"
+          minProgressiveWebAppScore: "50"
+          minSeoScore: "50"  
+      - name: Upload Lighthouse artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: Lighthouse reports
+          path: /tmp/artifacts
+      - name: Leave comment
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          accessToken: ${{ secrets.GITHUB_TOKEN }}
+          outputDirectory: /tmp/artifacts
+          urls: 'https://teradata.github.io/quickstarts-test-pr-previews/pr-preview/pr-${{ github.event.pull_request.number }}/'
+          device: 'desktop' 
+
+      - name: Prueba Test Nombre-1
+        run: echo "test good"
