@@ -41,5 +41,14 @@ jobs:
           outputDirectory: /tmp/artifacts
           urls: 'https://teradata.github.io/quickstarts-test-pr-previews/pr-preview/pr-${{ github.event.pull_request.number }}/'
           device: 'desktop' 
+      - name: Handle Lighthouse Check results
+        uses: ./
+        with:
+          lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
+          minAccessibilityScore: "50"
+          minBestPracticesScore: "50"
+          minPerformanceScore: "95"
+          minProgressiveWebAppScore: "50"
+          minSeoScore: "50"
       - name: Prueba Test Nombre-1
-        run: echo 
+        run: echo "test good"
