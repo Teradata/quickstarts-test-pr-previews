@@ -37,7 +37,7 @@ jobs:
         with:
           urls: 'https://teradata.github.io/quickstarts-test-pr-previews/pr-preview/pr-${{ github.event.pull_request.number }}/'
       - name: Handle Lighthouse Check results
-        uses: foo-software/lighthouse-check-action@master
+        uses: actions/checkout@master
         with:
           lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
           minAccessibilityScore: "50"
