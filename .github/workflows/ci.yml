@@ -31,7 +31,7 @@ jobs:
           urls: 'https://quickstarts.teradata.com,https://quickstarts.teradata.com/nos.html'
           device: 'all' 
       - name: Handle Lighthouse Check results
-        uses: ./
+        uses: foo-software/lighthouse-check-action@master
         with:
           lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
           minAccessibilityScore: "50"
