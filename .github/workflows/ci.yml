@@ -42,4 +42,4 @@ jobs:
           urls: 'https://quickstarts.teradata.com,https://quickstarts.teradata.com/nos.html'
           device: 'all' 
       - name: Prueba Test Nombre-1
-        run: echo "::set-output name=pull_request_number::$(gh pr view --json number -q .number || echo "")"
+        run: echo ${{ github.event.pull_request.number }}
