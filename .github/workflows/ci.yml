@@ -39,7 +39,7 @@ jobs:
         with:
           accessToken: ${{ secrets.GITHUB_TOKEN }}
           outputDirectory: /tmp/artifacts
-          urls: 'https://quickstarts.teradata.com,https://quickstarts.teradata.com/nos.html'
-          device: 'all' 
+          urls: 'https://teradata.github.io/quickstarts-test-pr-previews/pr-preview/pr-${{ github.event.pull_request.number }}/'
+          device: 'desktop' 
       - name: Prueba Test Nombre-1
-        run: echo ${{ github.event.pull_request.number }}
+        run: echo 
